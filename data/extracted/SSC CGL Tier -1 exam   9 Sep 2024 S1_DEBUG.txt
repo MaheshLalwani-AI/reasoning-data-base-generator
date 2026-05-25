@@ -1,0 +1,3145 @@
+General Intelligence and Reasoning
+
+1.	 What will come in place of the question mark (?) in the 
+following equation, if ‘+’ and ‘–’ are interchanged and ‘×’ 
+and ‘÷’ are interchanged?
+	
+4515 × 5 – 431 ÷ 3 + 821 = ?	
+1.	1335	
+2.	1775	
+3.	1575	
+4.	1375
+2.	 31 is related to 152 by certain logic. Following the same 
+logic, 47 is related to 168. To which of the following is 66 
+related, following the same logic? (NOTE : Operations 
+should be performed on the whole numbers, without 
+breaking down the numbers into its constituent digits. 
+e.g., 13 – Operations on 13 such as adding /deleting /
+multiplying etc., to 13 can be performed. Breaking down 
+13 into 1 and 3 and then performing mathematical 
+operations on 1 and 3 is not allowed.)
+1.	180	
+2.	187	
+3.	185	
+4.	190
+3.	 Six letters Q, Z, V, T, L and A are written on different 
+faces of a dice. Two positions of this dice are shown in the 
+figures below. Find the letter on the face opposite to Q.
+
+Q
+
+Z
+V
+
+T
+
+L
+V
+
+1.	Z	
+2.	T	
+3.	V	
+4.	A
+4.	 In the following number-pairs, the second number is 
+obtained by applying certain mathematical operations 
+to the first number. In three of the four pairs, the same 
+pattern is applied and hence they form a group. Select the 
+number-pair that DOES NOT belong to this group.
+	
+(NOTE: Operations should be performed on the whole 
+numbers, without breaking down the numbers into their 
+constituent digits. e.g., 13 – Operations on 13 such as 
+adding/subtracting/multiplying to 13 can be performed. 
+Breaking down 13 into 1 and 3 and then performing 
+mathematical operations on 1 and 3 is not allowed.)	
+1.	335 - 119	
+2.	 358 - 152	 3.	317 - 101	
+4.	308 - 92
+5.	 In a certain code language, ‘NAME’ is written as ‘FNBO’ 
+and ‘NANO’ is written as ‘POBO’. How will ‘NAIL’ be 
+written in that language?
+1.	MOBJ	
+2.	MJOB 
+3.	MOJB	
+4.	 MJBO
+6.	 The question contains pairs of words that are related to 
+each other in a certain way. Three of the following four 
+word pairs are alike as these have the same relationship 
+and thus form a group. Which word pair is the one that 
+DOES NOT belong to that group?
+	
+(The words must be considered as meaningful English words 
+and must not be related to each other based on the number of 
+letters/number of consonants/vowels in the word.) 
+1.	Pentagon - 5 sides	
+2.	 Hexagon - 8 sides	
+3.	Triangle - 3 sides	
+4.	Square - 4 sides
+7.	 The position of how many letters will remain unchanged 
+if each of the letters in the word ‘NIGHTMARES’ is 
+re-arranged in the English alphabetical order from left to 
+right?
+1.	One 	
+2.	Four 	
+3.	Two	
+4.	Three
+
+8.	 What will come in the place of ‘?’ in the following 
+equation, if ‘+’ and ‘–‘ are interchanged and ‘×’ and ‘÷’ 
+are interchanged?
+	
+5 – 4 ÷ 9 + 80 × 10 = ?
+1.	31	
+2.	33	
+3.	35	
+4.	30
+9.	 Select the option in which the numbers share the same 
+relationship as that shared by the given pair of numbers. 
+(149, 213) 
+	
+(168, 232)
+	
+(NOTE: Operations should be performed on the whole 
+numbers, without breaking down the numbers into its 
+constituent digits. e.g., 13 – Operations on 13 such as adding/
+deleting/multiplying etc. to 13 can be performed. Breaking 
+down 13 into 1 and 3 and then performing mathematical 
+operations on 1 and 3 is not allowed.)
+1.	(162, 222)	
+2.	(153, 217)	 3.	(137, 211)	 4.	(144, 198)
+10.	 Select the correct mirror image of the given figure when 
+the mirror is placed at MN as shown below.
+
+y T f r 9 3 n
+
+M
+
+N
+1.
+
+y T f r 9 3 n
+
+2.
+
+y
+
+T
+
+f r 9 3 n
+
+3.
+
+y
+
+T
+
+f r
+
+9 3
+
+n
+
+4.	
+y
+T
+
+f
+
+r
+
+9 3
+
+n
+
+11.	 Select the option that is related to the fifth letter-cluster in 
+the same way as the second letter-cluster is related to the 
+first letter-cluster and the fourth letter-cluster is related to 
+the third letter-cluster.
+	
+MEK: NVP :: GYT: TBG :: JWH:?
+1.	QDS	
+2.	PCR	
+3.	QDT	
+4.	PCS
+12.	 Three statements are given followed by three conclusions 
+numbered I, II and III.
+	
+Assuming the statements to be true, even if they seem to 
+be at variance with commonly known facts, decide which 
+of the conclusions logically follow(s) from the statements.
+	
+Statements:
+	
+No card is a parcel.
+	
+All cards are envelopes. Some envelopes are bags.
+	
+Conclusions:
+	
+I.	 All envelopes can never be parcels. 
+	
+II. 	No card is a bag.
+	
+III.	At least some bags are postcards.
+1.	Only I follows	
+2.	Only II follows
+3.	Only I and III follow	
+4.	Only II and III follow
+13.	 Select the correct mirror image of the given figure when 
+the mirror is placed at MN as shown.
+
+b c F g l
+
+M
+
+N
+1.
+
+b c F g l
+
+2.	
+b
+c
+
+F
+
+g
+
+l
+
+3.
+
+b
+
+c
+
+F g l
+
+4.	
+b
+
+c
+
+F
+
+g l
+
+Time Allotted: 1 hour
+Max Marks: 200
+
+STAFF SELECTION COMMISSION
+
+COMBINED GRADUATE LEVEL (TIER-I)
+
+SOLVED PAPER 
+
+(9th September 2024: Shift-1)
+
+30	
+Oswaal SSC CGL Tier-I Year-wise Solved Papers
+
+14.	 Identify the option figure that when put in place of the 
+question mark (?) will logically complete the series.
+
+1.
+
+2.
+
+3.
+
+4.
+
+15.	 Which of the four options will replace the question mark 
+(?) in the following series? UE 88, VG 84, WI 80, XK76, ?
+1.	ZM72 	
+2.	ZN71	
+3.	YN73	
+4.	YM72
+16.	 Select the option that represents the letters that when 
+placed from left to right in the blanks below will complete 
+the letter series.
+	
+L_P_QS_K_P_S_KP_Q_L_ _PQS
+1.	KPLPLQLSPK	
+2.	PKLPQPLSKP
+3.	KPLPQQLPSK	
+4.	KPLPQLPSKP
+17.	 Identify the figure from the given options, which when 
+put in place of the question mark (?), will logically 
+complete the series.
+
+A
+E
+D
+C
+B
+A
+E
+D
+
+D
+C
+B
+A
+C
+B
+A
+E
+E
+D
+C
+B
+
+1.
+
+D
+B
+
+C
+E
+A
+
+2.
+
+B
+C
+
+E
+D
+A
+
+3.
+
+D
+B
+
+C
+
+E
+A
+
+4.
+
+E
+C
+
+A
+
+D
+B
+
+18.	 Six numbers 21, 22, 23, 24, 25 and 26 are written on 
+different faces of a dice. Three positions of this dice are 
+shown in the figure. Find the number on the face opposite 
+to 24.
+
+21
+
+23
+25
+
+21
+
+25
+22
+
+25
+
+24
+22
+
+1.	26	
+2.	25 	
+3.	22	
+4.	21
+
+19.	 How many triangles are there in the given figure?
+
+1.	21	
+2.	20	
+ 3.	18	
+4.	19
+20.	 In a certain code language, ‘what where how’ is written 
+as ‘aa dd ff’; ‘where there that’ is written as ‘dd zz pp’ 
+and ‘which what here’ is written as ‘ff kk ll’. How is ‘how’ 
+written in that language?
+
+1.	 aa	
+2.	kk	
+3.	 zz 	
+4.	 ff
+21.	 Three statements are given followed by three conclusions 
+numbered I, II and III.
+	
+Assuming the statements to be true, even if they seem to 
+be at variance with commonly known facts, decide which 
+of the conclusions logically follow(s) from the statements.
+	
+Statements:
+	
+Some tears are drops. 
+	
+Some drops are streams. 
+	
+All streams are rivers.
+	
+Conclusions:
+	
+I. 	 All tears can never be rivers.
+
+II.	 Some drops are rivers.
+	
+III. 	All tears being streams is a possibility.
+1.	Only conclusion I follows	
+2.	 Both II and III conclusion follow	
+3.	Only conclusion III follows
+4.	 Both I and II conclusion follow
+22.	 Which of the following terms will replace the question 
+mark (?) in the given series?
+	
+YZUW, ?, QTQU, MQOT, INMS
+1.	 UWSV	
+2.	 UWVS	
+3.	 USWV	
+4.	 WUSV
+23.	 In a certain code language,
+	
+‘A + B’ means ‘A is the mother of B’,
+	
+‘A – B’ means ‘A is the father of B’,
+	
+‘A $ B’ means ‘A is the son of B’,
+	
+‘A % B’ means ‘A is the sister of B’,
+	
+‘A / B’ means ‘A is the wife of B’ and
+	
+‘A = B’ means ‘A is the brother of B’.
+	
+Which of the following means A is the daughter of K?
+i.	 	 A + K / J – P = D 	
+	ii.	 J % P = K + A = D 
+iii.	K + A / P – D % J 	
+	iv. 	 D + K = A / P – J
+1.	 i	
+2.	 iii	
+3.	 ii	
+4.	 iv
+24.	 19 is related to 209 following a certain logic. Following the 
+same logic, 27 is related to 297. To which of the following 
+is 61 related, following the same logic?
+	
+(NOTE: Operations should be performed on the whole 
+numbers, without breaking down the numbers into its 
+constituent digits. e.g., 13 – Operations on 13 such as 
+adding /deleting /multiplying etc. to 13 can be performed. 
+Breaking down 13 into 1 and 3 and then performing 
+mathematical operations on 1 and 3 is not allowed)
+1.	653	
+2.	 600 	
+3.	571	
+4.	 671
+25.	 Which of the following numbers will replace the question 
+mark (?) in the given series?
+	
+1, 3, 10, 41, ?, 1237
+1.	202	
+2.	210	
+3.	200	
+4.	206
+
+General Awareness
+
+26.	 In which year was Project Tiger launched in India? 
+1.	1973	
+2.	1970	
+3.	1972	
+4.	1985
+27.	 Lathmar Holi is primarily celebrated in the state of:
+1.	Karnataka	
+2.	Himachal Pradesh
+3.	Arunachal Pradesh	
+4.	Uttar Pradesh
+28.	 Which of the following awards was won by Lata 
+Mangeshkar in the year 2001?
+1.	Dadasaheb Phalke Award
+2.	Padma Vibhushan
+3.	Bharat Ratna
+4.	Filmfare Lifetime Achievement Award
+29.	 Details about Sudarshana lake is given in a rock inscription 
+at Girnar (Junagarh), which was composed to record the 
+achievements of the Shaka ruler.
+1.	Chashtana	
+2.	 Rudradaman I	
+3.	Rudrasimha III 	
+4.	Maues
+30.	 _____is an industry association and self-regulatory organisation 
+(SRO) whose primary objective is to work towards the robust 
+development of the microfinance sector.
+1.	NABARD
+2.	Self-help Group Association	
+3.	Microfinance and Investments Regulatory Authority
+4.	Microfinance Institutions Network
+31.	 Which article has a similar provision to that of Article 32 
+and deals with writ jurisdiction?
+1.	Article 228	
+2.	Article 227
+3.	Article 226	
+4.	Article 225
+
+SOLVED PAPER (9th September 2024 Shift-1)	
+31
+
+32.	 Which of the following is NOT a condition for the 
+President’s office in India?
+1.	He shall not hold any office of profit
+2.	The allowances shall not be diminished during his term 
+of office.
+3.	He shall not be entitled, without payment of rent, to 
+use his official residence.
+4.	He shall not be a member of either House of the 
+Parliament.
+33.	 Which of the following statements best defines the 
+monoecious?
+1.	A flower with gynoecium only
+2.	A flower with androecium only
+3.	A flower with both androecium and gynoecium
+4.	A flower with dithecous
+34.	 Mohan Veena player, Pandit Vishwa Mohan Bhatt won 
+the____________ Award in the year 1994.
+1.	Grammy	
+2.	Sangita Kalanidhi
+3.	Oscar	
+4.	Sangeet Natak Akademi
+35.	 Who is the Union Minister of State (Independent Charge) 
+for Science and Technology as of July 2023?
+1.	Dharmendra Pradhan	
+2.	Jitendra Singh	
+3.	Ashwini Vaishnaw
+4.	Ramesh Pokhriyal
+36.	 Which of the following decomposition reactions is NOT a 
+redox reaction?
+1.	Decomposition of sodium hydride
+2.	Decomposition of calcium carbonate
+3.	Decomposition of potassium chlorate
+4.	Decomposition of dihydrogen monoxide
+37.	 Who among the following has authored the play ‘Nil 
+Darpan’?
+1.	Chittaranjan Das	
+2.	Motilal Nehru
+3.	Dinabandhu Mitra	
+4.	Sarojini Naidu
+38.	 Who among the following formed the Bihar Provincial 
+Kisan Sabha in 1929?
+1.	Jayprakash Narayan	
+2.	JM Sengupta
+3.	Kunwar Singh
+4.	Swami Sahajanand Saraswati
+39.	 Which plateau is very fertile because they are rich in black 
+soil that is very good for farming? 
+1.	 Deccan lava plateau	
+2.	African plateau
+3.	Ethiopian plateau	
+4.	Katanga plateau
+40.	 Which of the following is a correct order of basicity?
+1.	LiOH>NaOH>KOH>CsOH	
+2.	KOH>CsOH>NaOH>LiOH
+3.	LiOH>KOH>CsOH>NaOH
+4.	CsOH>KOH>NaOH>LiOH
+41.	 Which of the following pairs is INCORRECT regarding 
+the grade of organisation and its example?
+1.	Cell-tissue grade organisation - Jellyfish
+2.	Cellular grade organisation - Sycon
+3.	Protoplasmic grade organisation - Paramecium	
+4.	Tissue-organ grade organisation - Euplectella
+42.	 The head office of Board of Control for Cricket in India 
+(BCCI) is located in ............. .
+1.	Kolkata	
+2.	Chennai	
+3.	Mumbai	
+4.	New Delhi
+43.	 When the analysis of population density is done by 
+calculating it through net cultivated area, then the 
+measure is termed as:
+1.	Net density
+2.	Gross density
+3.	Agricultural density
+4.	Physiological density
+
+44.	 Mahendravarman I was the ruler of which of the following 
+dynasties?
+1.	Pallava	
+2.	Pandya	
+3.	Chalukya	 4.	Chola
+45.	 What challenge does foreign investment often face in India?
+1.	Excessive foreign competition
+2.	Lack of skilled labour
+3.	Lack of consumer base
+4.	Inconsistent regulatory environment
+46.	 Which of the following states is the biggest producer of 
+Pulses?
+1.	Bihar	
+2.	Madhya Pradesh
+3.	Punjab	
+4.	Haryana
+47.	 Who founded the Prarthana Samaj in Mumbai in 1867?
+1.	Gopal Krishna Gokhale	
+2.	Shri Ram Bajpai
+3.	Atmaram Pandurang	
+4.	Raja Ram Mohan Roy
+48.	 Who is the Chief Minister of Tamil Nadu as of July 2023?
+1.	KN Nehru	
+2.	Pinarayi Vijayan
+3.	 M Yediyurappa	
+4.	MK Stalin
+49.	 In which city was the first golf club of India situated?
+1.	Kolkata	
+2.	Mysore
+3.	Shimla	
+4.	Gulmarg
+50.	 Which Indian among the following has his name in Time 
+Magazine’s list of ‘100 most influential people of 2021’?
+1.	Amit Shah	
+2.	 Narendra Modi	
+3.	Neeraj Chopra	
+   4.	Virat Kohli
+
+Quantitative Aptitude
+
+51.	 A grocer professes to sell rice at the cost price, but uses a 
+fake weight of 870 g for 1 kg. Find his profit percentage 
+(correct to two decimal places).
+1.	11.11%	
+2.	14.94%	
+3.	15.11%	
+4.	18.21%
+52.	 The value of cos229° + cos261° is:
+
+1.
+
+3
+2
+
+2.	2	
+3.	0.	
+4.	1
+
+53.	 In a circular race of 840 m, A and B start running in the 
+same direction at the same time from the same point at 
+the speeds of 6 m/s and 12 m/s, respectively. After how 
+much time will they meet next?
+1.	140 s	
+2.	40 s	
+3.	70 s	
+4.	20 s
+54.	 Let O be the centre of the circle and AB and CD are 
+two parallel chords on the same side of the radius. OP 
+is perpendicular to AB and OQ is perpendicular to CD. 
+If AB = 10 cm, CD = 24 cm and PQ = 7 cm, then the 
+diameter (in cm) of the circle is equal to:
+1.	24	
+2.	13	
+3.	12	
+4.	26
+55.	 Which of the following statements is sufficient to conclude 
+that two triangles are congruent?
+1.	One side and one angle of both triangles are equal.
+2.	These have two equal sides and the same perimeter.
+3.	These have the same area and the same base.
+4.	These have the same base and the same height.
+56.	 The given table shows the percentage of marks obtained 
+by three students in three different subjects in an institute. 
+(maximum marks are given in brackets)
+
+Subject→ 
+Student¯
+History 
+(175)
+Geography 
+(200)
+Botany 
+(125)
+
+Ram 
+54
+87
+71
+
+Mohan
+51
+79
+78
+
+Shyam 
+75
+49
+76
+
+If in order to pass the exam, the minimum of 105 marks are 
+neededs in History, how many students pass in the exam?
+1.	2	
+2.	3	
+3.	1	
+4.	0
+
+32	
+Oswaal SSC CGL Tier-I Year-wise Solved Papers
+
+57.	 Fill pipe P is 21 times faster than fill pipe Q. If Q can fill a cistern in 110 minutes, find the time it takes to fill the cistern when 
+both fill pipes are opened together.
+1.	3 minutes	
+	2.	 5 minutes		
+3.	4 minutes	
+4.  6 minutes
+
+58.	 The following tables shows the marks (out of 100) obtained by five students in five different subjects.
+
+Student ¯
+Subject →
+Maths 
+Physics
+Chemistry 
+English 
+Physical Education
+
+Tarun 
+65
+80
+75
+85
+90
+
+Rohit 
+69
+76
+80
+88
+94
+
+Mohit 
+76
+84
+77
+90
+95
+
+Shobhit 
+76
+85
+76
+86
+78
+
+Sumit 
+90
+88
+78
+82
+68
+
+Who obtained 79 % marks in all the subject taken together?
+1.	Rohit	
+		
+2.	Tarun	
+		
+3. Mohit	 	
+	
+4.  Sumit
+
+59.	 R pays ` 100 to P with ` 5, ` 2 and ` 1 coins. The total 
+number of coins used for paying are 40. What is the 
+number of coins of denomination ` 5 in the payment?
+1.	13	
+2.	17	
+3.	16 	
+4.	18
+60.	 The radii of the two cones are in the ratio of 2 : 5 and their 
+volumes are in the ratio of 3 : 5. What is the ratio of their 
+heights?
+
+1.	13 : 11	
+2.	4 : 11	
+3.	11 : 15	
+4.	15 : 4
+61.	 Which of the following can be the value of ‘k’ so that the 
+number 217924k is divisible by 6?
+1.	2	
+2.	6	
+3.	0	
+4.	4
+62.	 In an election between two candidates, y% of the voters 
+did not vote. 10% of the votes cast were declared invalid, 
+while all the valid votes were cast in favour of either of 
+the two candidates. The candidate who got 59.375% of 
+the valid votes cast was declared elected by 2484 votes. If 
+the number of people eligible to vote in that election was 
+16,000, what is the value of y?
+1.	8	
+2.	8.4	
+3.	7.5	
+4.	7.2
+63.	 An article is marked at ` 550. If it is sold at a discount 
+of 40%, then the selling price becomes 10% more than its 
+cost price. What is the cost price (in `)?
+1.	330	
+2.	220	
+3.	300	
+4.	200
+64.	 If the sum of two sides of an equilateral triangle is 16 cm, 
+then find the third side.
+1.	Cannot be found	
+2.	16 cm
+3.	4 cm	
+4.	8 cm
+
+65.	 Simplify: x
+
+x
+
+2
+9
+3
+−
+(
+)
+
++
+
+1.	x – 9	
+2.	x + 3	
+3.	x – 3	
+4.	
+x2
+9
+−
+
+66.	 The following table shows the total candidates appeared 
+and number of candidates present, in different exam 
+centres – P, Q and R.
+	
+Study the table and answer the question that follows.
+
+Year 
+P
+Q
+R
+
+Total Present Total Present Total 
+Present
+
+2016
+45
+42
+56
+45
+55
+50
+
+2017
+50
+45
+75
+55
+45
+40
+
+2018
+64
+60
+65
+45
+65
+55
+
+2019
+80
+69
+84
+72
+70
+62
+
+2020
+55
+44
+80
+66
+90
+85
+
+‘Total’ 
+denotes 
+total 
+candidates 
+applied 
+for 
+the 
+centre,‘Present’ denotes the candidates appeared.
+	
+In which year was the number of absentees the second 
+highest in total across all centres?
+1.	2018	
+2.	2019	
+3.	2020	
+4.	2017
+67.	 The distance between the centres of two circles of radii 22 
+cm and 10 cm is 37 cm. If the points of contact of a direct 
+common tangent to these circles are M and Q, then find 
+the length of the line segment MQ.
+
+1.	39 cm	
+2.	29 cm	
+3.	35 cm	
+4.	25 cm
+68.	 The value of 
+	
+sin230 – sin240 + sin245 – sin255 – sin235 + sin245 – sin250 + 
+sin260 is:
+
+1.	4	
+2.	0	
+3.	1	
+4.	2
+69.	 The average marks (out of 100) of boys and girls in an 
+examination are 75 and 80, respectively. If the average 
+marks of all the students in that examination are 78. Find 
+the ratio of the number of boys to the number of girls.
+1.	1 : 3	
+2.	2 : 3	
+3.	1 : 2	
+4.	3 : 4
+70.	  Rajesh, in his printing press, got an order to print some
+
+books, out of which be completed
+
+17
+27  
+of the order in 34
+
+days. In how many days did he completed the entire 
+order of printings? 
+1.	54	
+2.	60	
+3.	56	
+4.	20
+71.	 Simplify:
+
+x
+x
+x
+
+x
+
+3
+2
+
+2
+15
+75
+125
+
+25
+
++
++
++
+
+−
+ 
+× (x – 5)
+
+1.	x2 + 5x + 25	
+2.	x2 – 25	
+3.	x2 + 10x + 25	
+4.	x2 + 25
+
+72.	 If cosecq = 5
+
+3
+
+, then evaluate (sec2q –1) × cot2q × (1+cot2q)
+
+1.
+
+9
+16
+
+2.
+
+25
+
+9
+
+3.
+
+25
+16
+
+4.
+
+4
+5
+
+73.	 Which of the following can be the value of k, if
+
+88
+8
+3 3
+
+6
+7
+5
+2
+2
+÷ × −×
+(
+)
+
+−× +
+(
+)
+k
+
+k
+ 
+= 1?
+ 
+1.	2, 7 	
+2.	4, 7	
+3.	3, 10	
+4.	1, 10
+
+SOLVED PAPER (9th September 2024 Shift-1)	
+33
+
+74.	 Read the given information and answer the question that follows.
+	
+The following table given the percentage of marks obtained by seven students in six different subject in an examination.
+	
+The number in the brackets give the maximum marks in each subject.
+
+Student
+
+Subject (Max. Marks)
+
+Maths 
+Chemistry
+Physics 
+Geography 
+History 
+Computer science
+
+(150)
+(130)
+(120)
+(100)
+(60)
+(40)
+
+Ayush 
+90
+50
+90
+60
+70
+80
+
+Aman 
+100
+80
+80
+40
+80
+70
+
+Sajal 
+90
+60
+70
+70
+90
+70
+
+Rohit 
+80
+65
+80
+80
+60
+60
+
+Muskan 
+80
+65
+85
+95
+50
+90
+
+Tanvi 
+70
+75
+65
+85
+40
+60
+
+Tarun 
+65
+35
+50
+77
+80
+80
+
+If someone secured all the highest scores that have been obtained by some student or their in the six subject as given in the 
+table above. what would be the exact overall percentage score cotained by that student
+
+1.
+
+90 5
+
+6%
+
+2.
+
+91 1
+
+6%
+
+3. 95.16 %	
+	
+4. 91 %
+
+75.	 Mohan borrows a sum of ` 4,22,092 at the rate of 20% 
+per annum simple interest. At the end of the first year, 
+he repays ` 21,679 towards return of principal amount 
+borrowed. If Mohan clears all pending dues at the end of 
+the second year, including interest payment that accrued 
+during the first year, how much does he pay (in `) at the 
+end of the second year?
+1.	5,61,347	
+2.	5,64,914	
+3.	5,58,380	
+4.	5,56,367
+
+English Comprehension
+
+76.	 Select the most appropriate synonym of the given word.
+	
+Fatal
+1.	Additional	 2.	Easy	
+3.	Deadly	
+4.	Jovial
+77.	 Select the option that expresses the given sentence in 
+active voice.
+	
+Lovely tunes are composed by Domnica.
+1.	Domnica composes tunes lovely.
+2.	Domnica will compose lovely tunes.
+3.	Domnica composes lovely tunes.	
+4.	Domnica composed lovely tunes.
+78.	 Select the option that expresses the opposite meaning of 
+the underlined word.
+	
+The explosive used is of my own formulation and I can 
+vouch for its efficiency.
+1.	invalidate	
+2.	maintain	 3.	witness	
+4.	certify
+79.	 The following sentence has been divided into four 
+segments. Identify the segment that contains an error.
+	
+Mr. Abhilash and his family / have received / no 
+informations / about the incident.
+1.	about the incident.
+2.	Mr. Abhilash and his family
+3.	have received
+4.	no informations
+80.	 Select the most appropriate synonym of the given word.
+	
+Toxic
+1.	Lethal	
+2.	Licit
+3.	Laudatory	
+4.	Lanky
+81.	 Select the word which means the same as the group of 
+words given.
+	
+Unit of weight for precious stones
+1.	Pure	
+2.	Accurate	
+3.	Reliable	
+4.	Carat
+
+82.	 Select the option that can be used as a one-word substitute 
+for the underlined group of words.
+	
+She is proficient in speaking many languages.
+1.	heterolinguistic	
+2.	bilingual
+3.	multilingual	
+4.	monolithic
+83.	 Select the option that expresses the given sentence in 
+passive voice.
+	
+Ishika saw the tiger in the forest.
+1.	The tiger saw by Ishika in the forest.	
+2.	The tiger sees Ishika in the forest.
+3.	The tiger was seen by Ishika in the forest.	
+4.	The tiger was seen by the forest in Ishika.
+84.	 Select the option that can be used as a one-word substitute 
+for the given group of words.
+	
+A person who likes to argue about anything
+1.	Veracious	
+2.	Reticent
+3.	Contentious	
+4.	Coward
+85.	 Select the most appropriate option that can substitute the 
+underlined segment in the given sentence.
+	
+‘Spy Family’ is a graphic novel that is a narrative work 
+in which the story is conveyed to the reader using 
+uninterrupted art in a traditional comics format.
+1.	sedimental art in a traditional	
+2.	longitudinal art in a traditional
+3.	existential art in a traditional	
+4.	sequential art in a traditional
+86.	 The following sentence has been split into four segments. 
+Identify the segment that contains a grammatical error.
+	
+My brother performed / extremely good / in the class test 
+/ held yesterday.
+1.	held yesterday	
+2.	extremely good
+3.	in the class test	
+4.	My brother performed
+87.	 Select the INCORRECTLY spelt word. 
+1.	Bureaucracy	
+2.	Embarrass
+3.	Connoisseur	
+4.	Relevent
+88.	 Select the most appropriate synonym to replace the 
+underlined word in the given sentence.
+	
+No altruistic act is truly sincere.
+1.	phenomenal	 		
+2.	phonotypical	
+3.	philanthropic			
+4.	phantasmal
+89.	 Select the most appropriate synonym of the given word.
+	
+Innuendo
+1.	Crude	
+2.	Prose	
+3.	Ragged	
+4.	Insinuation
+
+34	
+Oswaal SSC CGL Tier-I Year-wise Solved Papers
+
+90.	 Select the most appropriate option to fill in the blank.
+	
+Vinod had a ______  escape in the car accident.  
+1.	comfortable	 		
+2.	full	
+3.	narrow	
+		
+4.	wide
+91.	 Select the option that can be used as a one-word substitute 
+for the given phrase.
+	
+A short interesting story about a real person or event
+1.	Anecdote	
+2.	Sketch	
+3.	Poem	
+4.	Narrative
+92.	 Select the most appropriate synonym of the word in bold.
+	
+We’d better watch our step and not give him any excuse 
+to harass us further.
+1.	betray	
+2.	intimidate	3.	relish	
+4.	soothe
+93.	 Select the most appropriate meaning of the given idiom.
+	
+To have bigger fish to fry	
+1.	To have bigger things to take care of than the menial 
+task at hand	
+2.	To take calculated risks
+3.	To know different kinds of fishing techniques
+4.	To have an interest in cooking
+94.	 In the following sentence, four words are underlined out of 
+which one word is misspelt. Identify the INCORRECTLY 
+spelt word.
+	
+After the recapture (A) of Tololing and the adjacent 
+features, evacting (B) the enemy from this well-fortified 
+(C) position became a priority. (D)
+1.	B	
+2.	D	
+3.	C	
+4.	A
+95.	 Select the most appropriate option to substitute the 
+underlined segment in the given sentence.
+	
+She has been studying for two O’clock .
+1.	study from two O’clock	
+2.	studying since two O’clock
+3.	studying two O’clock	
+4.	study for two O’clock
+
+Comprehension: 
+	
+In the following passage, some words have been deleted. 
+Select the most appropriate option to fill in each blank.
+	
+There is a saying that coming events cast their shadows 
+before. (1) ______ it is not universally true. Something 
+can happen within a second, and one may not (2) ______ 
+it. (3) ______ some instances show that predictions based 
+on certain signs have gone wrong. People generally say 
+that natural calamities can be predicted by observing the 
+animals. But what if animals are suffering from some 
+disease and don’t show any signs before the event appears? 
+They may fail to make peculiar sounds or actions about 
+the events which are going to take place. (4) ______ some 
+unnatural calamities that are likely to appear may forecast 
+their shadows by some bad omens. (5) ______ we should not 
+completely cancel out the possibilities that animals can sense 
+certain unnatural happenings.
+96.	 Select the most appropriate option to fill in blank  number 1.
+1.	Therefore	
+		
+2.	Furthermore	
+3.	Moreover	
+		
+4.	However
+97.	 Select the most appropriate option to fill in blank number 2.
+1.	rescind	
+2.	foresee	
+3.	legalise	
+4.	affect
+98.	 Select the most appropriate option to fill in blank number 3.
+1.	Therefore	
+2.	Moreover
+3.	However	
+4.	Nevertheless
+99.	 Select the most appropriate option to fill in blank number 4.
+1.	Therefore	
+2.	Secondly	 3.	Besides	
+4.	Despite
+100.	Select the most appropriate option to fill in blank number 5.
+1.	Therefore	
+		
+2.	However	
+3.	Nevertheless	 		
+4.	Moreover
+
+Answer Key
+
+1. (4)
+2. (2)
+3. (2)
+4. (2)
+5. (4)
+6. (2)
+7. (2)
+8. (2)
+9. (2)
+10. (2)
+11. (1)
+12. (1)
+13. (1)
+
+14. (2)
+15. (4)
+16. (4)
+17. (2)
+18. (4)
+19. (1)
+20. (1)
+21. (2)
+22. (1)
+23. (4)
+24. (4)
+25. (4)
+26. (1)
+
+27. (4)
+28. (3)
+29. (2)
+30. (4)
+31. (3)
+32. (3)
+33. (3)
+34. (1)
+35. (2)
+36. (2)
+37. (3)
+38. (4)
+39. (1)
+
+40. (4)
+41. (4)
+42. (3)
+43. (4)
+44. (1)
+45. (4)
+46. (2)
+47. (3)
+48. (4)
+49. (1)
+50. (2)
+51. (2)
+52. (4)
+
+53. (1)
+54. (4)
+55. (2)
+56. (3)
+57. (2)
+58. (2)
+59. (1)
+60. (4)
+61. (1)
+62. (1)
+63. (3)
+64. (4)
+65. (3)
+
+66. (2)
+67. (3)
+68. (2)
+69. (2)
+70. (1)
+71. (3)
+72. (2)
+73. (4)
+74. (2)
+75. (2)
+76. (3)
+77. (3)
+78. (1)
+
+79. (4)
+80. (1)
+81. (4)
+82. (3)
+83. (3)
+84. (3)
+85. (4)
+86. (2)
+87. (4)
+88. (3)
+89. (4)
+90. (3)
+91. (1)
+
+92. (2)
+93. (1)
+94. (1)
+95. (2)
+96. (4)
+97. (2)
+98. (2)
+99. (3)
+100. (1)
+
+Answers with Explanations
+
+General Intelligence and Reasoning
+
+1.	
+Option (4) is the correct.
+	
+The given expression becomes 
+	
+4515 ÷ 5 + 431 × 3 – 821
+	
+= 903 + 1293 – 821
+	
+= 2196 – 821= 1375
+
+2.	
+Option (2) is the correct.
+	
+The rule followed is:
+	
+	
+31 + 121	= 152
+	
+	
+47 + 121	= 168
+	
+So, 	66 + 121	= 187
+
+3.	
+Option (2) is the correct.
+
+The letters on opposite faces are (Q, T); (Z, L) and (A, V)
+
+4.	
+Option (2) is the correct.
+
+Except option (2), the difference of numbers in other
+
+options is 216.
+
+5.	
+Option (4) is the correct.
+
+We have
+
+N
+A
+M
+E
+
+F
+N
+B
+O
+
++1
+
+N
+A
+N
+O
+
+P
+O
+B
+O
+
++1
+
+SOLVED PAPER (9th September 2024 Shift-1)	
+35
+
+So,
+
+N
+A
+I
+L
+
+M
+J
+B
+O
+
++1
+
+6.	
+Option (2) is the correct.
+
+Hexagon has 6 sides. 
+7.	
+Option (2) is the correct.
+
+N I G H T M A R E S ®
+
+A E G H I M N R S T ®
+
+Given word
+
+New word
+
+So, required number of letters = 4
+
+8.	
+Option (2) is the correct.
+
+The given expression becomes
+
+5 + 4 × 9 – 80 ÷ 10
+
+= 5 + 4 × 9 – 8
+
+= 5 + 36 – 8 = 41 – 8 = 33
+
+9.	
+Option (2) is the correct.
+
+The difference between the pair of numbers is 64.
+	
+So, 217 – 64 = 153
+
+10.	 Option (2) is the correct.
+
+M
+
+N
+
+y T f r 9 3 n
+
+y
+
+T
+
+f r 9 3 n
+
+11.	 Option (1) is the correct.
+
+13
+5
+11
+7
+25
+20
+10
+23
+8
+
+M
+E
+K
+G
+Y
+T
+J
+W
+H
+
+N
+V
+P
+T
+B
+G
+Q
+D
+S
+
+14
+22
+16
+20
+2
+7
+17
+4
+19
+	
+So, missing letter cluster is QDS.
+
+12.	 Option (1) is the correct.
+	
+As all cards are envelopes and no card is a parcel. 
+	
+So, all envelopes can never be parcels 
+13.	 Option (1) is the correct.
+
+b c F g l
+
+b c F g l
+
+M
+
+N
+14.	 Option (2) is the correct.
+	
+The elements moves as follows:
+
+15.	 Option (4) is the correct.
+	
+The rule followed so:
+
+U
+
+E
+
+88
+
++1
+
++2
+
+–4
+
+V
+
+G
+
+84
+
++1
+
++2
+
+–4
+
+W
+
+I
+
+80
+
++1
+
++2
+
+–4
+
+X
+
+K
+
+76
+
++1
+
++2
+
+–4
+
+Y
+
+M
+
+72
+
+16.	 Option (4) is the correct.
+	
+The letters repeated as: LKPPQS
+
+17.	 Option (2) is the correct.
+	
+The elements moves as follows:
+
+18.	 Option (4) is the correct.
+	
+The numbers an opposite faces are. 
+	
+(26, 25); (21, 24) and (23, 22)
+19.	 Option (1) is the correct.
+	
+a
+b
+
+c
+e
+d
+f
+g
+
+r
+q
+
+p
+o
+n
+m k
+l
+
+i
+h
+j
+
+Triangles formed are:
+	
+a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, fg, km, pq
+	
+\ Number of triangles formed = 21
+20.	 Option (1) is the correct.
+	
+Hence,
+	
+What where how → aa dd ff 
+...(i)
+	
+Where there that → dd zz pp 
+...(ii)
+	
+Which what here → ff kk ll 
+...(iii)
+	
+From (i) and (iii)
+	
+what → ff 
+...(iv)
+	
+From (i) and (ii) 
+	
+where → dd 
+...(v)
+	
+So, from (i), (iv) and (v)
+	
+how → aa
+
+21.	 Option (2) is the correct.
+
+Tears
+
+Dropes
+
+Stream
+
+Rivers
+
+or
+
+Dropes
+
+Stream
+
+Rivers
+
+Tears
+
+So, both conclusions II and III follows
+
+22.	 Option (1) is the correct.
+
+The rule followed is:
+
+Y
+
+Z
+
+U
+
+W
+
+–2
+
+–1
+
+–3
+
+–4
+U
+
+W
+
+S
+
+V
+
+–2
+
+–1
+
+–3
+
+–4
+Q
+
+T
+
+Q
+
+U
+
+–2
+
+–1
+
+–3
+
+–4
+M
+
+Q
+
+O
+
+T
+
+–2
+
+–1
+
+–3
+
+–4
+I
+
+N
+
+M
+
+S
+
+23.	 Option (4) is the correct.
+
+(i)  A
+
+K
+J
+
+P
+D
+
+So, A is the mother of K.
+
+36	
+Oswaal SSC CGL Tier-I Year-wise Solved Papers
+
+(ii) J
+P
+K
+
+A
+D
+
+So, A is the son of K.
+
+(iii)
+
+K
+
+A
+P
+
+D
+J
+
+So, A is the son of K.
+
+(iv)
+
+D
+
+K
+A
+P
+
+J
+
+So, A is the daughter of K.  
+24.	 Option (4) is the correct.
+	
+As, 19 × 11 = 209
+
+and 27 × 11 = 297
+
+So, 61 × 11 = 671
+
+25.	 Option (4) is the correct.
+
+The rule followed is
+
+1 ×2+1
+3 ×3+1
+10 ×4+1
+41 ×5+1
+206
+
+×6+1
+1237
+
+General Awareness
+
+26.	 Option (1) is correct.
+Project Tiger was launched on April 1, 1973, by the Union 
+Ministry of Environment, Forest and Climate Change. 
+Initially, it was launched in nine reserves of the country, 
+and as of March 2024, it has been expanded to 55 reserves. 
+The National Tiger Conservation Authority (NTCA) was 
+established in 2005 to streamline the management of Project 
+Tiger. Under the project tiger, the first tiger census was 
+conducted in 1972. As per the latest tiger census, Madhya 
+Pradesh has the highest tiger population in India. 
+27.	 Option (4) is correct.
+Lathmar Holi is celebrated in Barsana and Nandgaon, Uttar 
+Pradesh and is associated with Radha and Lord Krishna. It is a 
+week-long celebration in which women beat men with sticks 
+or lathis. People enjoy this traditional festival by dancing, 
+singing, and throwing colours at each other.  
+28.	 Option (3) is correct.
+Lata Mangeshkar won Bharat Ratna in 2001. Lata Mangeshkar 
+was an Indian playback singer who was considered one of the 
+greatest singers ever. She is also called ‘Nightingale of India’, 
+‘Voice of the Millennium’, and ‘Queen of Melody.’ 
+Bharat Ratna is the highest civilian award given by the 
+Government of India. It was given for the first time in 1954 
+to C. Rajagopalachari, Sarvepalli Radhakrishnan, and C. V. 
+Raman. 
+29.	 Option (2) is correct.
+The details about Sudarshana Lake are given on a rock 
+inscription at Girnar (Junagarh) to record the achievements 
+of Rudradaman I. Sudarshan Lake is located in mid-Girnar 
+Hill in Saurashtra, Gujarat, and it was built as an artificial 
+reservoir to prevent flooding. The lake was constructed on 
+the order of Chandragupta Maurya.  The rock inscription is 
+also known as the Girnar Rock inscription of Rudradaman.
+
+30.	 Option (4) is correct.
+The Microfinance Institutions Network (MFIN) is an industry 
+association and self-regulatory organisation (SRO) whose 
+primary objective is to work towards the robust development 
+of the microfinance sector. It was established in 2009 as an 
+industry association for Non-Bank Finance Company Micro 
+Finance Institutions (NBFC-MFIs). In 2014, RBI was recognised 
+it as India’s first SRO for NBFC-MFIs. As of October 2024, Dr. 
+Alok Mishra is the CEO and Director of MFIN.  
+31.	 Option (3) is correct.
+Article 226 of the Indian Constitution gives the High Court 
+the power to issue writs for the enforcement of fundamental 
+rights and other purposes.
+Article 228 of the Indian Constitution gives the High Court 
+the power to transfer cases from subordinate courts to itself. 
+Article 227 of the Constitution of India gives the High Court 
+the power of superintendence over all courts and tribunals 
+within its jurisdiction. 
+Article 225 of the Indian Constitution establishes the 
+jurisdiction of existing High Courts and the law administered 
+in them.
+32.	 Option (3) is correct.
+The conditions for the President of India are covered under 
+Part IV, Article 59 of the Indian Constitution. They are as 
+follows: 
+	
+• 	The President cannot be a member of either House 
+of Parliament or of a House of the Legislature of any 
+State. In case the person is a member, the person needs 
+to vacate their seat in that House on the date on which 
+he enters his office as President.
+	
+• 	The President shall not hold any other office of profit.
+	
+•	 The President is entitled to use their official residences 
+without payment of rent 
+	
+• 	The emoluments and allowances of the President shall 
+not be diminished during his term of office.
+33.	 Option (3) is correct.
+‘Monoecious’ plants are the ones that have both male 
+(androecium) and female (gynoecium) reproductive organs 
+in the same plant. Some of the examples are Magnolias, 
+Squash, coconuts etc. ‘Dioecious plants’ have male and 
+female reproductive parts of different plants. e.g., red, cedars 
+and ginkgos.  
+34.	 Option (1) is correct.
+Pandit Vishwa Mohan Bhatt is an Indian Hindustani classical 
+music instrumentalist known for playing Mohan Veena. He 
+won a Grammy Award for his album ‘Meeting by the River 
+with Ry Cooder. The Grammy Awards celebrate outstanding 
+achievements in the music industry. The Recording Academy 
+of the United States presents these awards.   
+35.	 Option (2) is correct.
+As of June 2023, the Union Minister of State (Independent 
+Charge) for Science and Technology was Dr. Jitendra Singh. 
+36.	 Option (2) is correct.
+A redox reaction is a chemical reaction in which the transfer 
+of electrons takes place between the reactants. In these 
+reactions, Oxidation (loss of electrons) and reduction (gain of 
+electrons) take place at the same time. The decomposition of 
+calcium carbonate is a decomposition reaction in which the 
+compound breaks down into two or more components. In 
+case of the calcium carbonate, it breaks down into Calcium 
+Oxide and Carbon dioxide. 
+37.	 Option (3) is correct.
+The play ‘Nil Darpan’ or ‘Indigo Planting Mirror’ was a Bengali 
+play written by Dinabandhu Mitra in 1858-59.  The play was 
+written in context of the Indigo revolt and it highlighted the 
+treatment of the Indian peasantry by the Indigo planters. 
+The play was instrumental in the development of theatre in 
+Bengal.
+
+SOLVED PAPER (9th September 2024 Shift-1)	
+37
+
+38.	 Option (4) is correct.
+The Bihar Provincial Kisan Sabha (BPKS) was formed in 1929 
+by Swami Sahajanand Saraswati to address the grievances 
+of peasants against the zamindars. Its first meeting was 
+conceived at Sonepur Mela in Saran district, Bihar.
+39.	 Option (1) is correct.
+The Deccan lava plateau is known for its black soil. Black soil 
+has volcanic origins and has nutrients and minerals good for 
+cultivation and farming. The black colour of the soil is due to 
+the presence of iron, aluminium and humus. 
+40.	 Option (4) is correct.
+Basicity is the measure of a base’s ability to accept hydrogen 
+ions, or protons, in water to form a stable product. The correct 
+order is CsOH> KOH>NaOH>LiOH.  
+41.	 Option (4) is correct.
+The grade of organisation means how cells are arranged in 
+an organism’s body. An organism can have different grades 
+of organisation- cellular, tissue, organ and the organ system. 
+Euplectella has a cellular-level organisation. They are also 
+known as glass sponges as they lack tissues.  
+42.	 Option (3) is correct.
+The head office of the Board of Control for Cricket in India 
+(BCCI) is located in Mumbai, Maharashtra. BCCI is the 
+national governing body of cricket in India. BCCI is the 
+wealthiest governing body of cricket in India. As of October 
+2024, the  President of BCCI is Roger Binny, the CEO is 
+Hemang Amin and the secretary is Jay Shah. 
+43.	 Option (4) is correct.
+When the analysis of population density is done by 
+calculating it through net cultivated area, then the measure is 
+termed Physiological density. It measures how many people 
+live per unit of arable land in a region. Arable land is suitable 
+for growing crops and raising animals for food.
+Agriculture density is the number of farmers per unit of 
+arable land.  
+44.	 Option (1) is correct.
+Mahendravarman I was a Pallava emperor who ruled from 
+600–630 CE over the northern parts of present-day Tamil 
+Nadu and the southern parts of present-day Andhra Pradesh 
+in India. He was a musician, scholar, and an architect. Under 
+his rule, art and culture, and Tamil literature flourished.  He 
+was succeeded by his son, Narasimhavarman I.
+45.	 Option (4) is correct.
+Due to an inconsistent regulatory environment, it becomes 
+challenging for foreign investors. 
+46.	 Option (2) is correct.
+The biggest producer of Pulses is Madhya Pradesh which is 
+known for the cultivation of Moong, Chana, Masoor, Arhar, 
+etc.   
+47.	 Option (3) is correct.
+Prarthana Samaj was founded by Dr. Atmaram Pandurang in 
+1867. Also known as the ‘Prayer Society’, its goals included 
+opposing the caste system, encouraging widow remarriage, 
+and promoting female education. 
+48.	 Option (4) is correct.
+Muthuvel Karunanidhi Stalin is the current and eighth Chief 
+Minister of Tamil Nadu. He is holding the position since 
+2021. He has been the president of the Dravida Munnetra 
+Kazhagam (DMK) party since 2018. MK Stalin is the son of 
+Muthuvel Karunanidhi.
+49.	 Option (1) is correct.
+The first and oldest Golf club in India, Royal Calcutta Golf 
+Club (RCGC) was established in 1829 in Kolkata, West Bengal. 
+50.	 Option (2) is correct.
+Narendra Modi was named in Time Magazine’s ’100 most 
+influential people of 2021’ list. He was featured on the list 
+along with West Bengal Chief Minister Mamata Banerjee, 
+Chief Executive Officer of the Serum Institute of India (SII), 
+Adar Poonawalla.
+
+Quantitative Aptitude
+
+51.	 Option (2) is correct.
+
+Profit percentage = 1000
+870
+
+870
+100
+−
+×
+
+= 14.94%
+52.	 Option (4) is correct.
+	
+cos2 29° + cos2 61°
+	
+= cos2(90° – 61°) + cos2 61°
+	
+= sin2 61° + cos2 61°
+	
+= 1
+
+53.	 Option (1) is correct.
+
+Time taken by A to complete a round = 840
+
+6
+	
+= 140 secs
+
+Time taken by B to complete a round = 840
+
+12  
+	
+= 70 secs
+	
+So, required time = LCM (140, 70) = 140 secs
+54.	 Option (4) is correct.
+
+O
+
+A
+B
+
+r
+
+7 cm
+P
+
+C
+r
+
+12 cm
+
+D
+Q
+
+In ∆OQC (using Pythagoras theorem)
+	
+	
+	
+r	= OQ2 + 144
+	
+In ∆OPA, (using Pythagoras theorem)
+	
+	
+	
+r2	= (OQ + 7)2 + 25
+	
+So, OQ2 + 144 = OQ2 + 49 + 14(OQ) + 25
+	
+⇒ 	
+100Q	= 70 ⇒ OQ = 5
+	
+\ 	
+r2	= 25 + 144 = 169 ⇒ r = 13
+	
+So, 	 diameter	= 20 = 26 cm
+
+55.	 Option (2) is correct.
+	
+If two triangles have two equal side and same perimeter, 
+then the two triangles are congruent.  
+56.	 Option (3) is correct.
+
+Required percentage to pass in history = 105
+
+175
+100
+×
+
+= 60%
+	
+So, only 1 student passed in history.
+57.	 Option (2) is correct.
+	
+Since, pipe Q fill in 110 min. So, part of cistern filled per
+
+minute by pipe Q = 1
+
+110
+
+So, part of cistern filled per minute by pipe P = 21
+
+110
+	
+\ Part of cistern filled by pipe P and Q together
+
+= 21
+
+110
+
+1
+110
++
+
+= 22
+
+110  
+= 1
+
+5   
+	
+\ Required time = 5 minutes
+58.	 Option (2) is correct.
+	
+Total marks obtained by Tarun 
+	
+= 65 + 80 + 75 + 85 + 90 = 395
+
+So, required percentage = 395
+
+500
+100
+×
+
+= 79%
+ 
+59.	 Option (1) is correct.
+	
+Let the number of coins of  ` 5, ` 2 and ` 1 be x, y and z 
+respectively
+
+38	
+Oswaal SSC CGL Tier-I Year-wise Solved Papers
+
+So, 	
+5x + 2y + z	= 100 
+...(i)
+	
+and 	
+x + y + z	= 40 
+...(ii)
+	
+On subtracting, we get 
+	
+	
+	
+4x + y	= 60 ⇒ y = 60 – 4x
+	
+Now, from (ii), 	
+z	= 40 – y – x = 40 – (60 – 4x) – x
+	
+	
+	
+	= 3x – 20
+	
+As, 60 – 4x ³ 0 ⇒ 	 x	£ 15
+
+and 3x – 20 ³ 7, 0 ⇒ 	x ³ 20
+
+3
+
+So, from the options x could be 13.
+
+60.	 Option (4) is correct.
+	
+Let radii of two cones r1 and r2 respectively
+
+So,
+
+V
+V
+
+1
+
+2
+
+= 3
+
+5
+
+⇒
+
+1
+3
+1
+3
+
+1
+2
+1
+
+2
+2
+2
+
+p
+
+p
+
+r h
+
+r h
+
+= 3
+
+5
+
+⇒ 	 r
+r
+h
+h
+
+1
+
+2
+
+2
+1
+
+2
+
+
+
+
+
+
+
+
+× 
+
+
+
+
+
+
+
+
+= 3
+
+5
+
+⇒ 	 2
+5
+
+2
+1
+
+2
+
+
+
+
+
+
+× 
+
+
+
+
+
+
+
+h
+h
+
+= 3
+5
+
+⇒
+
+h
+h
+
+1
+
+2
+
+=
+
+3
+5
+
+25
+
+4
+×
+
+= 15
+
+4
+
+61.	 Option (1) is correct.
+	
+The number 217924 k must be divisible by 2 and 3 both.
+	
+Sum of digits = 2 + 1 + 7 + 9 + 2 + 4 + k
+	
+	
+	
+	= 25 + k 
+	
+So, 	
+k	= 2
+62.	 Option (1) is correct.
+	
+Total no. of eligible voters = 16000
+	
+No, of people vote	
+	= (100 – y)% = 16000
+	
+	
+	
+	= (100 – y) × 160
+	
+	
+	
+	= 16000 – 160y
+
+Number of valid votes = 90
+
+100
+16000
+160
+×
+−
+(
+)
+y
+
+According to questions,
+
+(
+.
+.
+)%
+(
+)
+59 375
+40 625
+90
+100 16000
+160
+−
+−
+
+
+
+
+
+
+of
+y
+
+=2484
+
+⇒ 18 75
+
+100
+
+90
+100
+.
+×
+
+(16000 – 160y) = 2484
+
+⇒ 	
+y	= 8
+
+63.	 Option (3) is correct.
+	
+	
+	M.P	= ` 550
+	
+	
+	 S.P	= (100 – 40)% of ` 550
+
+= 60
+
+100
+550
+×
+
+= ` 330
+
+So, 	S.P	= 110% of C.P
+
+330	= 110
+
+100 ×C.P
+
+⇒ 	C.P	= ` 300
+
+64.	 Option (4) is correct.
+	
+Sum of two sides = 16 cm
+
+⇒ Length of side = 16
+
+2  
+= 8 cm
+
+65.	 Option (3) is correct.
+
+x
+
+x
+
+2
+9
+3
+−
++
+ 
+= (
+)(
+)
+x
+x
+x
+−
++
++
+3
+3
+3
+ 
+= x – 3
+ 
+66.	 Option (2) is correct.
+	
+Number of absentees in 2016
+	
+= (45 – 42) + (56 – 45) + (55 – 50)
+	
+= 3 + 11 + 5 = 19
+	
+Number of absentees in 2017
+	
+= (50 – 45) + (75 – 55) + (45 – 40)
+	
+= 5 + 20 + 5 = 30
+	
+Number of absentees in 2018
+	
+= (64 – 60) + (65 – 45) + (65 – 55)
+	
+= 4 + 20 + 10 = 34
+	
+Number of absentees in 2019
+	
+= (80 – 69) + (84 – 72) + (70 – 62)
+	
+= 11 + 12 + 8 = 31
+	
+Number of absentees in 2020
+	
+= (55 – 44) + (80 – 66) + (90 – 85)
+	
+= 11 + 14 + 5 = 30
+67.	 Option (3) is correct.
+
+O
+
+10
+22
+
+M
+
+Q
+
+37
+
+N
+
+Length of common tangent
+
+= 
+37
+22
+10
+2
+2
+−
+−
+(
+)
+
+= 
+1369
+144
+−
+ = 
+1225  = 35 cm
+
+68.	 Option (2) is correct.
+
+sin2 30° – sin2 40° + sin2 45° – sin2 55° – sin2 35° + sin2 45° – 
+sin2 50° + sin2 60°
+
+=
+
+1
+2
+5
+1
+
+2
+35
+
+2
+2
+2
+2
+
+
+
+
+
+−
+° + 
+
+
+
+
+−
+°
+cos
+cos
+0
+
+−
+° + 
+
+
+
+
+−
+° + 
+
+
+
+
+
+
+
+sin
+sin
+2
+2
+2
+2
+35
+1
+
+2
+50
+3
+2
+
+= 1
+
+4
+1
+1
+2
+1
+1
+2
+
+3
+4
+−
++
+−
++
++
+
+= 0
+
+69.	 Option (2) is correct.
+	
+Let the number of boys and girls be b and g respectively.
+	
+\ 	Sum of marks of boys = 75 b
+	
+and sum of marks of girls = 80 g
+
+Now,
+
+75
+80
+b
+g
+b
+g
++
++
+
+= 78
+
+⇒ 	
+75 b + 80 g	= 78 b + 78 g
+
+⇒ 	
+3 b	= 2 g
+
+⇒
+
+b
+g
+
+= 2
+
+3
+
+SOLVED PAPER (9th September 2024 Shift-1)	
+39
+
+70.	 Option (1) is correct.
+	
+Reignited number of days
+
+= 34
+
+17
+27
+×
+
+= 54 days
+
+71.	 Option (3) is correct.
+
+x
+x
+x
+
+x
+x
+
+3
+2
+
+2
+15
+75
+125
+
+25
+5
++
++
++
+
+−
+−
+(
+)
+
+(
+)
+
+=
+
+(
+)(
+)(
+)
+(
+)(
+)
+x
+x
+x
+x
+x
+x
++
++
++
+−
+−
++
+5
+10
+25
+5
+5
+5
+
+2
+
+= x2 + 10x + 25 
+72.	 Option (2) is correct.
+
+cosec θ = 5
+
+3
+
+(sec2θ – 1) × cot2θ (1 + cot2θ)
+	
+= tan2θ × cot2θ × cosec2θ
+
+= 1
+25
+
+9
+×
+
+= 25
+
+9
+
+73.	 Option (4) is correct.
+
+(
+)
+
+(
+)
+
+88
+8
+3
+3
+
+6
+7
+5
+2
+2
+÷
+×
+−
+×
+
+−
+×
++
+
+k
+
+k
+ 
+= 1
+
+⇒ 
+11
+9
+
+36
+35
+2
+×
+−
+
+−
++
+
+k
+
+k
+ 
+= 1
+
+⇒  
+11k – 9	= 1 + k2
+
+⇒ 	
+k2 – 11k + 10	= 0
+	
+⇒ 	
+(k – 10) (k – 1)	= 0
+	
+⇒ 	
+k	= 1, 10
+
+74.	 Option (2) is correct.
+	
+Total marks obtained
+
+= 100% of 150 + 80% of 130 + 90% of 120 + 95% of 100
+
+
++ 90% of 60 + 90% of 40
+
+= 1
+×
++
+×
++
+×
+
++
+×
++
+×
++
+×
+
+00
+100
+150
+80
+100
+130
+90
+100
+120
+
+95
+100
+100
+90
+100
+60
+90
+100
+40
+
+= 150 + 104 + 108 + 95 + 54 + 36 = 547
+
+Total maximum marks
+
+= 150 + 130 + 120 + 100 + 60 + 40 = 600
+
+\ Required percentage = 547
+
+600
+100
+×
+
+= 91 1
+
+6%
+
+75.	 Option (2) is correct.
+
+Principal	= ` 422092
+
+Interest for Ist year		= 422092
+20
+100
+
+×
+
+= ` 84418.40
+	
+Amount to be paid 	= 422092 – 21679
+
+= ` 400413
+
+Now, interest for IInd year
+
+= 400413
+20
+100
+×
+
+= ` 80082 .60
+
+Now, total amount needs to pay at the end of IInd year
+
+= ` (400413 + 84418.40 + 80082.60)
+
+= ` 564914
+
+English Comprehension
+
+76.	 Option (3) is correct.
+The word 'fatal' refers to something that causes death or leads 
+to disaster. Among the options, 'deadly' is the closest synonym 
+because it also describes something that can cause death or 
+extreme harm. The other choices—'additional,' 'easy,' and 
+'jovial'—are unrelated to this meaning. 
+77.	 Option (3) is correct.
+The given sentence is in passive voice, where 'Lovely tunes' 
+is the subject. In active voice, the subject performs the 
+action. Option 3, 'Domnica composes lovely tunes,' correctly 
+expresses this, with 'Domnica' as the doer and 'lovely tunes' 
+as the object. 
+78.	 Option (1) is correct.
+The underlined word 'vouch' means to confirm or support 
+something as true. The opposite of this would be to reject 
+or deny. Among the options, 'invalidate' best expresses the 
+opposite meaning, as it means to nullify or prove something 
+to be incorrect, unlike the other choices.
+79.	 Option (4) is correct.
+The error lies in segment 4, 'no informations.' The word 
+'informations' is incorrect because 'information' is an 
+uncountable noun and should not have an 's' at the end. The 
+correct phrase should be 'no information.' 
+80.	 Option (1) is correct.
+The word 'toxic' refers to something that is harmful or poisonous. 
+Among the options, 'lethal' is the closest synonym, as it also 
+describes something that can cause death or serious harm. The 
+other choices—'licit,' 'laudatory,' and 'lanky'—are unrelated to 
+this meaning.
+81.	 Option (4) is correct.
+The phrase 'unit of weight for precious stones' refers 
+specifically to how gemstones are measured. The correct 
+answer, 'carat,' is a standard unit used to express the weight 
+of diamonds and other gemstones, making it the most fitting 
+choice among the options provided.
+82.	 Option (3) is correct.
+The phrase 'proficient in speaking many languages' can be 
+replaced with the term 'multilingual.' This word specifically 
+describes a person who has the ability to speak several 
+languages fluently, distinguishing it from 'bilingual,' which 
+refers to speaking in two languages.
+83.	 Option (3) is correct.
+The original sentence 'Ishika saw the tiger in the forest' is in 
+active voice. Option 3, 'The tiger was seen by Ishika in the 
+forest,' correctly transforms it into passive voice, making the 
+tiger the subject and indicating that Ishika is the doer of the 
+action. 
+84.	 Option (3) is correct.
+The phrase 'a person who likes to argue about anything' can be 
+concisely described as 'contentious.' This term refers to someone 
+who is prone to causing disputes or arguments, making it the 
+most fitting choice compared to the other options listed. 
+85.	 Option (4) is correct.
+The underlined segment 'uninterrupted art in a traditional' 
+is best replaced by 'sequential art in a traditional,' which 
+accurately describes the method of storytelling in graphic 
+novels. Sequential art refers to the use of images arranged in 
+a specific order to convey a narrative, aligning perfectly with 
+the context.
+
+40	
+Oswaal SSC CGL Tier-I Year-wise Solved Papers
+
+86.	 Option (2) is correct.
+The error is in segment 2, 'extremely good.' The adjective 
+'good' should be replaced with the adverb 'well' to correctly 
+describe how the brother performed. The correct phrase would 
+be 'performed extremely well' to reflect proper grammatical 
+structure. This is because the verb performed can be modified 
+by an adverb, not adjective.
+87.	 Option (4) is correct.
+The incorrectly spelled word is 'relevent.' The correct spelling 
+is 'relevant,' which means closely connected or appropriate 
+to the matter at hand. The other options—bureaucracy, 
+embarrass and connoisseur—are correctly spelled. 
+88.	 Option (3) is correct.
+The word 'altruistic' refers to selfless concern for the well-
+being of others. Among the options, 'philanthropic' is the most 
+appropriate synonym, as it also conveys a sense of generosity 
+and a desire to promote the welfare of others, aligning closely 
+with the original meaning.
+89.	 Option (4) is correct.
+The term 'innuendo' refers to an indirect or subtle reference, 
+often with a negative connotation. The best synonym among 
+the options is 'insinuation,' which similarly implies a hint or 
+suggestion, often with an underlying or implied meaning 
+that is not explicitly stated.
+90.	 Option (3) is correct.
+Vinod had a narrow escape in the car accident. The phrase 
+'narrow escape' commonly describes a situation where 
+someone avoids danger or harm by a small margin. The other 
+options, such as 'comfortable,' 'full' and 'wide', do not convey 
+the urgency of the situation. 
+91.	 Option (1) is correct.
+The phrase 'a short interesting story about a real person or 
+event' can be replaced with 'anecdote.' An anecdote specifically 
+refers to a brief, engaging account of a real incident or person, 
+making it the most suitable option compared to the others. 
+92.	 Option (2) is correct.
+In the sentence, 'harass' means to disturb or bother someone 
+repeatedly. The best synonym from the options is 'intimidate,' 
+which conveys a similar sense of creating fear or anxiety in 
+someone, aligning closely with the original meaning.
+
+93.	 Option (1) is correct.
+The idiom 'to have bigger fish to fry' means to have more 
+important or significant matters to address than the current task. 
+It emphasises prioritising more crucial issues, making option 1 
+the most appropriate interpretation.
+94.	 Option (1) is correct.
+The misspelled word is 'evacting' in option B, which should 
+be 'evacuating.' The term 'evacuating' refers to the process of 
+removing people from a place, especially for safety reasons. The 
+other words are spelled correctly. 
+95.	 Option (2) is correct.
+The phrase 'has been studying for two O’clock' is incorrectly 
+used. The correct substitution is 'studying since two O’clock,' 
+which accurately indicates that she began studying at two 
+O’clock and has continued doing so, reflecting the proper use 
+of the present perfect continuous tense. To specify, 'for' is used 
+for a duration of time, while 'since' is used to refer to a point 
+of time till the present.
+96.	 Option (4) is correct.
+The word 'However' is the most suitable option to fill in blank 
+number 1, as it introduces a contrast to the saying about 
+predictions, acknowledging that the idea is not universally true. 
+97.	 Option (2) is correct.
+The option 'foresee' fits perfectly in blank number 2, as it 
+means to anticipate or predict an event. This aligns with the 
+context of predicting events. 
+98.	 Option (2) is correct.
+'Moreover' is the correct choice for blank number 3 because 
+it adds additional information about predictions based on 
+signs that have proven incorrect, indicating a continuation of 
+thought. 
+99.	 Option (3) is correct.
+The word 'Besides' is appropriate for blank number 4, 
+as it introduces additional information about unnatural 
+calamities, suggesting that there are more aspects to consider 
+in the discussion. 
+100.	Option (1) is correct.
+'Therefore' is the best option for blank number 5, as it 
+summarises the previous ideas, indicating that while 
+predictions can fail, some possibilities remain valid and 
+should not be dismissed.
+

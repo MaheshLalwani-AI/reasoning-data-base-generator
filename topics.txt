@@ -1,0 +1,38 @@
+
+1.Coding – Decoding 
+2.Alphabet Test 
+3.Logical Sequence of Word 
+4.Missing Number 
+5.Symbols and Notations
+6.Series 
+7.Analogy 
+8.Classification 
+9.Direction and Distance 
+10.Blood Relation 
+11.Ranking 
+12.Seating Arrangement 
+13.Puzzles Logical Reasoning 
+14.Logical Vein Diagram 
+15.Syllogism 
+16.Statement and Conclusion 
+17.Statement and Assumption 
+18.Statement and Argument 
+19.Statement and Course of Action 
+20.Statement and Inference 
+21.Cause and Effect 
+22.Eligibility Test 
+23.Calendar 
+24.Clock 
+25.Arithmetical Reasoning 
+26.Inequalities 
+27.Cube & Dice 
+28.Figure Counting 
+29.Mirror Image & Water Image 
+30.Paper Folding 
+31.Paper Cutting 
+32.Embedded Figures 
+33.Completion of Figures 
+34.Formation of Figures 
+35.Fgure Analogy 
+36.Figure Classification 
+37.Figure Series Completion
