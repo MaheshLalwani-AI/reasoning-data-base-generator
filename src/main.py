@@ -1,5 +1,3 @@
-import asyncio
-import os
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -18,18 +16,6 @@ from extraction.extractor import (
 
 from extraction.parsers.metadata_parser import (
     QuestionParser,
-)
-
-from solving.ai_solver import (
-    AISolver,
-)
-
-from solving.topic_classifier import (
-    TopicClassifier,
-)
-
-from solving.verifier import (
-    AnswerVerifier,
 )
 
 
@@ -81,10 +67,6 @@ def main():
 
     load_dotenv()
 
-    api_key = os.getenv(
-        "OPENROUTER_API_KEY"
-    )
-
     pdf_path = get_pdf_path()
 
     print(
@@ -133,6 +115,17 @@ def main():
         f"Questions parsed: "
         f"{len(questions)}\n"
     )
+
+    # ATTACH EXAM NAME
+    # FROM PDF FILENAME
+
+    exam_name = pdf_path.stem
+
+    for question in questions:
+
+        question.exam_name = (
+            exam_name
+        )
 
     if questions:
 
@@ -218,123 +211,10 @@ def main():
     )
 
     # STEP 4
-    # AI SOLVING
-
-    if api_key:
-
-        print(
-            "[4] AI solving..."
-        )
-
-        topic_classifier = (
-            TopicClassifier(
-                topics_file="topics.txt"
-            )
-        )
-
-        solver = AISolver(
-            api_key=api_key,
-
-            topics_text=(
-                topic_classifier
-                .get_topics_text()
-            ),
-        )
-
-        verifier = (
-            AnswerVerifier()
-        )
-
-        results = asyncio.run(
-            solver.solve_batch(
-                questions
-            )
-        )
-
-        solved_count = 0
-
-        for question, result in zip(
-            questions,
-            results,
-        ):
-
-            if isinstance(
-                result,
-                Exception,
-            ):
-
-                print(
-                    f"Failed Q"
-                    f"{question.question_number}: "
-                    f"{result}"
-                )
-
-                continue
-
-            option_number = result.get(
-                "correct_option_number"
-            )
-
-            if (
-                option_number
-                and isinstance(
-                    option_number,
-                    int,
-                )
-                and 1 <= option_number
-                <= len(question.options)
-            ):
-
-                question.ai_answer = (
-                    question.options[
-                        option_number - 1
-                    ]
-                )
-
-            question.reasoning_type = (
-                result.get(
-                    "topic"
-                )
-            )
-
-            question.solution = (
-                result.get(
-                    "solution"
-                )
-            )
-
-            question.verification_status = (
-                verifier.verify(
-
-                    pdf_answer=(
-                        question.correct_answer
-                    ),
-
-                    ai_answer=(
-                        question.ai_answer
-                    ),
-                )
-            )
-
-            solved_count += 1
-
-        print(
-            f"AI solved: "
-            f"{solved_count}\n"
-        )
-
-    else:
-
-        print(
-            "[4] AI solving skipped "
-            "(No API key)\n"
-        )
-
-    # STEP 5
     # WRITE EXCEL
 
     print(
-        "[5] Writing Excel..."
+        "[4] Writing Excel..."
     )
 
     output_path = Path(
@@ -349,10 +229,6 @@ def main():
 
         output_path=str(
             output_path
-        ),
-
-        pdf_path=str(
-            pdf_path
         ),
     )
 
