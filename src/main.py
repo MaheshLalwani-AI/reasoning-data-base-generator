@@ -15,11 +15,15 @@ from extraction.extractor import (
 )
 
 from extraction.parsers.metadata_parser import (
-    QuestionParser,
+    QuestionParser as MetadataParser,
+)
+
+from extraction.parsers.plain_mcq_parser import (
+    QuestionParser as UniversalParser,
 )
 
 
-def get_pdf_path() -> Path:
+def get_pdf_paths() -> list[Path]:
 
     pdf_folder = Path(
         "data/pdfs"
@@ -35,47 +39,71 @@ def get_pdf_path() -> Path:
             "No PDFs found in data/pdfs"
         )
 
-    print(
-        f"\nPDFs found: "
-        f"{len(pdf_files)}"
-    )
+    return pdf_files
 
-    for pdf in pdf_files:
 
-        print(
-            f"- {pdf.name}"
+def choose_parser(
+    pages,
+):
+
+    sample_text = ""
+
+    for page in pages[:3]:
+
+        blocks = page.get(
+            "blocks",
+            [],
         )
 
-    print()
+        for block in blocks:
 
-    return pdf_files[0]
+            sample_text += (
+                block.get(
+                    "text",
+                    "",
+                )
+                + "\n"
+            )
+
+    if (
+        "Question Number"
+        in sample_text
+        and
+        "Question Id"
+        in sample_text
+    ):
+
+        print(
+            "Using metadata parser"
+        )
+
+        return MetadataParser()
+
+    print(
+        "Using universal parser"
+    )
+
+    return UniversalParser()
 
 
-def main():
+def process_pdf(
+    pdf_path: Path,
+):
 
     print(
         "\n======================="
     )
 
     print(
-        "QUESTION COLLECTOR"
+        f"PROCESSING: "
+        f"{pdf_path.name}"
     )
 
     print(
         "=======================\n"
     )
 
-    load_dotenv()
-
-    pdf_path = get_pdf_path()
-
-    print(
-        f"Using PDF: "
-        f"{pdf_path.name}\n"
-    )
-
     # STEP 1
-    # EXTRACT PDF
 
     print(
         "[1] Extracting PDF..."
@@ -97,13 +125,14 @@ def main():
     )
 
     # STEP 2
-    # PARSE QUESTIONS
 
     print(
         "[2] Parsing questions..."
     )
 
-    parser = QuestionParser()
+    parser = choose_parser(
+        pages
+    )
 
     questions = (
         parser.parse_pages(
@@ -116,9 +145,6 @@ def main():
         f"{len(questions)}\n"
     )
 
-    # ATTACH EXAM NAME
-    # FROM PDF FILENAME
-
     exam_name = pdf_path.stem
 
     for question in questions:
@@ -127,20 +153,7 @@ def main():
             exam_name
         )
 
-    if questions:
-
-        print(
-            "FIRST QUESTION:\n"
-        )
-
-        print(
-            questions[0]
-        )
-
-        print()
-
     # STEP 3
-    # DETECT ANSWERS
 
     print(
         "[3] Detecting answers..."
@@ -160,8 +173,6 @@ def main():
         f"Answers detected: "
         f"{len(answers)}\n"
     )
-
-    mapped_count = 0
 
     for question in questions:
 
@@ -196,37 +207,58 @@ def main():
                     ]
                 )
 
-                mapped_count += 1
+        except Exception:
+            pass
+
+    return questions
+
+
+def main():
+
+    load_dotenv()
+
+    pdf_paths = get_pdf_paths()
+
+    print(
+        f"\nPDFs found: "
+        f"{len(pdf_paths)}\n"
+    )
+
+    all_questions = []
+
+    for pdf_path in pdf_paths:
+
+        try:
+
+            questions = process_pdf(
+                pdf_path
+            )
+
+            all_questions.extend(
+                questions
+            )
 
         except Exception as e:
 
             print(
-                f"Answer mapping failed "
-                f"for Q{qno}: {e}"
+                f"\nFAILED: "
+                f"{pdf_path.name}"
             )
 
-    print(
-        f"Mapped answers: "
-        f"{mapped_count}\n"
-    )
-
-    # STEP 4
-    # WRITE EXCEL
-
-    print(
-        "[4] Writing Excel..."
-    )
+            print(e)
 
     output_path = Path(
         "data/extracted/extracted_questions.xlsx"
     )
 
+    print(
+        "\n[4] Writing Excel..."
+    )
+
     writer = ExcelWriter()
 
     writer.write(
-
-        questions=questions,
-
+        questions=all_questions,
         output_path=str(
             output_path
         ),

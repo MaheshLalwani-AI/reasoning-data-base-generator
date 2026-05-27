@@ -78,13 +78,10 @@ class PDFExtractor:
                 if not text:
                     continue
 
-                # REMOVE VERY SHORT
-                # RANDOM OCR GARBAGE
+                # REMOVE VERY SMALL
+                # OCR GARBAGE
 
-                if (
-                    len(text) <= 1
-                ):
-
+                if len(text) <= 1:
                     continue
 
                 cleaned_blocks.append(
@@ -103,62 +100,25 @@ class PDFExtractor:
                 continue
 
         # =========================
-        # COLUMN DETECTION
+        # UNIVERSAL SORTING
         # =========================
 
-        left_column = []
+        # SORT BY:
+        # 1. TOP TO BOTTOM
+        # 2. LEFT TO RIGHT
 
-        right_column = []
-
-        page_width = page.rect.width
-
-        midpoint = (
-            page_width / 2
-        )
-
-        for block in cleaned_blocks:
-
-            x0 = block["bbox"][0]
-
-            if x0 < midpoint:
-
-                left_column.append(
-                    block
-                )
-
-            else:
-
-                right_column.append(
-                    block
-                )
-
-        # =========================
-        # SORT TOP TO BOTTOM
-        # =========================
-
-        left_column.sort(
+        cleaned_blocks.sort(
             key=lambda b:
             (
-                b["bbox"][1],
-                b["bbox"][0],
+                round(
+                    b["bbox"][1],
+                    1,
+                ),
+                round(
+                    b["bbox"][0],
+                    1,
+                ),
             )
         )
 
-        right_column.sort(
-            key=lambda b:
-            (
-                b["bbox"][1],
-                b["bbox"][0],
-            )
-        )
-
-        # =========================
-        # REBUILD READING ORDER
-        # =========================
-
-        ordered_blocks = (
-            left_column
-            + right_column
-        )
-
-        return ordered_blocks
+        return cleaned_blocks

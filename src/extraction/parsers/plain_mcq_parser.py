@@ -7,51 +7,62 @@ class QuestionParser:
 
     QUESTION_PATTERN = re.compile(
         r"""
-        (?=
-            \n?\d+\.\s
+        (
+            Q\.\d+.*?
         )
+        (?=
+            Q\.\d+
+            |
+            \Z
+        )
+        """,
+        re.DOTALL | re.VERBOSE,
+    )
+
+    QUESTION_NUMBER_PATTERN = re.compile(
+        r"Q\.(\d+)"
+    )
+
+    QUESTION_ID_PATTERN = re.compile(
+        r"""
+        Question\s*ID
+        \s*:\s*
+        (\d+)
         """,
         re.VERBOSE,
     )
 
-    OPTION_PATTERNS = [
+    CHOSEN_OPTION_PATTERN = re.compile(
+        r"""
+        Chosen\s*Option
+        \s*:\s*
+        (\d+)
+        """,
+        re.VERBOSE,
+    )
 
-        # (1) option
-
-        re.compile(
-            r"""
-            \((\d)\)
-            \s*
-            (.*?)
-            (?=
-                \(\d\)
-                |
-                \n\d+\.\s
-                |
-                \Z
-            )
-            """,
-            re.DOTALL | re.VERBOSE,
-        ),
-
-        # 1. option
-
-        re.compile(
-            r"""
-            \n(\d)\.\s*
-            (.*?)
-            (?=
-                \n\d\.\s
-                |
-                \n\d+\.\s
-                |
-                \Z
-            )
-            """,
-            re.DOTALL | re.VERBOSE,
-        ),
-
-    ]
+    OPTION_PATTERN = re.compile(
+        r"""
+        (?:
+            Ans\s*
+        )?
+        (\d+)\.
+        \s*
+        (.*?)
+        (?=
+            (?:Ans\s*)?\d+\.
+            |
+            Question\s*ID
+            |
+            Chosen\s*Option
+            |
+            Status
+            |
+            \Z
+        )
+        """,
+        re.DOTALL | re.VERBOSE,
+    )
 
     def parse_pages(
         self,
@@ -60,7 +71,7 @@ class QuestionParser:
 
         questions = []
 
-        seen = set()
+        seen_questions = set()
 
         for page in pages:
 
@@ -82,117 +93,57 @@ class QuestionParser:
                 for block in blocks
             )
 
-            chunks = re.split(
-                self.QUESTION_PATTERN,
-                page_text,
+            matches = list(
+                self.QUESTION_PATTERN.finditer(
+                    page_text
+                )
             )
 
-            for chunk in chunks:
+            for match in matches:
 
                 try:
 
-                    chunk = chunk.strip()
-
-                    if len(chunk) < 40:
-                        continue
-
-                    q_match = re.match(
-                        r"(\d+)\.",
-                        chunk,
+                    chunk = (
+                        match.group(1)
+                        .strip()
                     )
 
-                    if not q_match:
+                    qno_match = (
+                        self.QUESTION_NUMBER_PATTERN.search(
+                            chunk
+                        )
+                    )
+
+                    if not qno_match:
                         continue
 
                     question_number = int(
-                        q_match.group(1)
+                        qno_match.group(1)
                     )
 
-                    if question_number in seen:
-                        continue
-
-                    options = []
-
-                    matched_pattern = None
-
-                    for pattern in (
-                        self.OPTION_PATTERNS
+                    if (
+                        question_number
+                        in seen_questions
                     ):
 
-                        matches = pattern.findall(
-                            chunk
-                        )
-
-                        if len(matches) >= 2:
-
-                            matched_pattern = (
-                                pattern
-                            )
-
-                            for _, text in matches:
-
-                                text = (
-                                    self._clean_text(
-                                        text
-                                    )
-                                )
-
-                                if text:
-
-                                    options.append(
-                                        text
-                                    )
-
-                            break
-
-                    if len(options) < 2:
                         continue
 
-                    question_text = chunk
-
-                    if matched_pattern:
-
-                        question_text = (
-                            matched_pattern.sub(
-                                "",
-                                question_text,
-                            )
-                        )
-
-                    question_text = re.sub(
-                        r"^\d+\.\s*",
-                        "",
-                        question_text,
-                    )
-
-                    question_text = (
-                        self._clean_text(
-                            question_text
+                    parsed = (
+                        self._parse_question(
+                            chunk=chunk,
+                            page_number=page_number,
+                            question_number=question_number,
                         )
                     )
 
-                    if not question_text:
+                    if parsed is None:
                         continue
-
-                    question = Question(
-                        exam_name="",
-                        page_number=page_number,
-                        question_number=question_number,
-                        question_id="",
-                        question_text=question_text,
-                        options=options[:4],
-                        correct_answer="",
-                        ai_answer="",
-                        verification_status="",
-                        reasoning_type="",
-                        solution="",
-                    )
 
                     questions.append(
-                        question
+                        parsed
                     )
 
-                    seen.add(
+                    seen_questions.add(
                         question_number
                     )
 
@@ -203,6 +154,112 @@ class QuestionParser:
                     )
 
         return questions
+
+    def _parse_question(
+        self,
+        chunk,
+        page_number,
+        question_number,
+    ):
+
+        question_id = ""
+
+        qid_match = (
+            self.QUESTION_ID_PATTERN.search(
+                chunk
+            )
+        )
+
+        if qid_match:
+
+            question_id = (
+                qid_match.group(1)
+            )
+
+        option_matches = (
+            self.OPTION_PATTERN.findall(
+                chunk
+            )
+        )
+
+        options = []
+
+        for _, option_text in option_matches:
+
+            option_text = (
+                self._clean_text(
+                    option_text
+                )
+            )
+
+            if option_text:
+
+                options.append(
+                    option_text
+                )
+
+        if len(options) < 2:
+
+            return None
+
+        # REMOVE OPTIONS
+
+        question_text = (
+            self.OPTION_PATTERN.sub(
+                "",
+                chunk,
+            )
+        )
+
+        # REMOVE METADATA
+
+        question_text = re.sub(
+            r"Question\s*ID\s*:.*",
+            "",
+            question_text,
+        )
+
+        question_text = re.sub(
+            r"Chosen\s*Option\s*:.*",
+            "",
+            question_text,
+        )
+
+        question_text = re.sub(
+            r"Status\s*:.*",
+            "",
+            question_text,
+        )
+
+        question_text = re.sub(
+            r"Q\.\d+",
+            "",
+            question_text,
+        )
+
+        question_text = (
+            self._clean_text(
+                question_text
+            )
+        )
+
+        if not question_text:
+
+            return None
+
+        return Question(
+            exam_name="",
+            page_number=page_number,
+            question_number=question_number,
+            question_id=question_id,
+            question_text=question_text,
+            options=options[:4],
+            correct_answer="",
+            ai_answer="",
+            verification_status="",
+            reasoning_type="",
+            solution="",
+        )
 
     def _clean_text(
         self,
@@ -218,17 +275,15 @@ class QuestionParser:
             if not line:
                 continue
 
-            if (
-                self._is_non_english_dominant(
-                    line
-                )
-            ):
+            lower = line.lower()
 
+            if "adda247" in lower:
                 continue
 
-            # REMOVE OCR GARBAGE
+            if "exammix" in lower:
+                continue
 
-            if len(line) <= 2:
+            if len(line) <= 1:
                 continue
 
             lines.append(
@@ -238,33 +293,3 @@ class QuestionParser:
         return "\n".join(
             lines
         ).strip()
-
-    def _is_non_english_dominant(
-        self,
-        text,
-    ):
-
-        english_chars = len(
-            re.findall(
-                r"[A-Za-z]",
-                text,
-            )
-        )
-
-        total_letters = len(
-            re.findall(
-                r"[^\W\d_]",
-                text,
-                flags=re.UNICODE,
-            )
-        )
-
-        if total_letters == 0:
-            return False
-
-        ratio = (
-            english_chars
-            / total_letters
-        )
-
-        return ratio < 0.40
