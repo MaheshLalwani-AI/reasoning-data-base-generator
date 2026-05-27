@@ -8,7 +8,7 @@ from openpyxl.utils import (
     get_column_letter,
 )
 
-from src.models import Question
+from models import Question
 
 
 class ExcelWriter:

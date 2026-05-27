@@ -1,59 +1,83 @@
-import os
 import asyncio
+import os
 from pathlib import Path
 
 from dotenv import load_dotenv
 
-from extractor import PDFExtractor
-from parser import QuestionParser
-from answer_detector import AnswerDetector
-from excel_writer import ExcelWriter
-from ai_solver import AISolver
-from verifier import AnswerVerifier
-from topic_classifier import TopicClassifier
+from extraction.answer_detector import (
+    AnswerDetector,
+)
+
+from extraction.excel_writer import (
+    ExcelWriter,
+)
+
+from extraction.extractor import (
+    PDFExtractor,
+)
+
+from extraction.parsers.metadata_parser import (
+    QuestionParser,
+)
+
+from solving.ai_solver import (
+    AISolver,
+)
+
+from solving.topic_classifier import (
+    TopicClassifier,
+)
+
+from solving.verifier import (
+    AnswerVerifier,
+)
+
 
 def get_pdf_path() -> Path:
 
-    data_folder = Path("data")
+    pdf_folder = Path(
+        "data/pdfs"
+    )
 
-    pdf_files = list(
-        data_folder.glob("*.pdf")
+    pdf_files = sorted(
+        pdf_folder.glob("*.pdf")
     )
 
     if not pdf_files:
 
         raise FileNotFoundError(
-            "No PDF found inside data folder."
+            "No PDFs found in data/pdfs"
         )
 
-    if len(pdf_files) > 1:
+    print(
+        f"\nPDFs found: "
+        f"{len(pdf_files)}"
+    )
 
-        print(
-            "\nWARNING:"
-        )
-
-        print(
-            "Multiple PDFs found."
-        )
+    for pdf in pdf_files:
 
         print(
-            f"Using: {pdf_files[0].name}\n"
+            f"- {pdf.name}"
         )
+
+    print()
 
     return pdf_files[0]
 
 
 def main():
 
-    print("\n==============================")
-
     print(
-        "REASONING PDF AI SOLVER"
+        "\n======================="
     )
 
-    print("==============================\n")
+    print(
+        "QUESTION COLLECTOR"
+    )
 
-    # LOAD ENV
+    print(
+        "=======================\n"
+    )
 
     load_dotenv()
 
@@ -61,38 +85,29 @@ def main():
         "OPENROUTER_API_KEY"
     )
 
-    if not api_key:
-
-        raise ValueError(
-            "OPENROUTER_API_KEY not found in .env"
-        )
-
-    # AUTO DETECT PDF
-
     pdf_path = get_pdf_path()
 
-    output_path = (
-        Path("data")
-        / "output.xlsx"
-    )
-
     print(
-        f"PDF Selected: "
+        f"Using PDF: "
         f"{pdf_path.name}\n"
     )
 
     # STEP 1
-    # Extract PDF
+    # EXTRACT PDF
 
     print(
         "[1] Extracting PDF..."
     )
 
     extractor = PDFExtractor(
-        pdf_path=str(pdf_path)
+        pdf_path=str(
+            pdf_path
+        )
     )
 
-    pages = extractor.extract_pages()
+    pages = (
+        extractor.extract_pages()
+    )
 
     print(
         f"Pages extracted: "
@@ -100,7 +115,7 @@ def main():
     )
 
     # STEP 2
-    # Parse Questions
+    # PARSE QUESTIONS
 
     print(
         "[2] Parsing questions..."
@@ -108,8 +123,10 @@ def main():
 
     parser = QuestionParser()
 
-    questions = parser.parse_pages(
-        pages
+    questions = (
+        parser.parse_pages(
+            pages
+        )
     )
 
     print(
@@ -117,31 +134,39 @@ def main():
         f"{len(questions)}\n"
     )
 
+    if questions:
+
+        print(
+            "FIRST QUESTION:\n"
+        )
+
+        print(
+            questions[0]
+        )
+
+        print()
+
     # STEP 3
-    # Detect PDF Answers
+    # DETECT ANSWERS
 
     print(
-        "[3] Detecting PDF answers..."
+        "[3] Detecting answers..."
     )
 
     detector = AnswerDetector(
-        pdf_path=str(pdf_path)
+        pdf_path=str(
+            pdf_path
+        )
     )
 
-    answers = detector.detect_answers()
+    answers = (
+        detector.detect_answers()
+    )
 
     print(
         f"Answers detected: "
-        f"{len(answers)}"
+        f"{len(answers)}\n"
     )
-
-    print("\nAnswer Map:")
-
-    print(answers)
-
-    print()
-
-    # MAP PDF ANSWERS
 
     mapped_count = 0
 
@@ -167,7 +192,9 @@ def main():
             if (
                 0
                 <= option_index
-                < len(question.options)
+                < len(
+                    question.options
+                )
             ):
 
                 question.correct_answer = (
@@ -181,127 +208,127 @@ def main():
         except Exception as e:
 
             print(
-                f"Failed mapping Q{qno}: {e}"
+                f"Answer mapping failed "
+                f"for Q{qno}: {e}"
             )
 
     print(
-        f"PDF answers mapped: "
+        f"Mapped answers: "
         f"{mapped_count}\n"
     )
 
     # STEP 4
     # AI SOLVING
 
-    print(
-        "[4] Solving with DeepSeek V4 Flash..."
-    )
-
-    topic_classifier = (
-        TopicClassifier(
-            topics_file="topics.txt"
-        )
-    )
-
-    solver = AISolver(
-        api_key=api_key,
-        topics_text=(
-            topic_classifier
-            .get_topics_text()
-        ),
-    )
-
-    verifier = AnswerVerifier()
-
-    results = asyncio.run(
-        solver.solve_batch(
-            questions
-        )
-    )
-
-    solved_count = 0
-
-    for question, result in zip(
-        questions,
-        results,
-    ):
-
-        if isinstance(
-            result,
-            Exception,
-        ):
-
-            print(
-                f"Failed Q"
-                f"{question.question_number}: "
-                f"{result}"
-            )
-
-            continue
-
-        # DEBUG PRINT
+    if api_key:
 
         print(
-            f"\nQ{question.question_number} RESULT:"
+            "[4] AI solving..."
         )
 
-        print(result)
-
-        # AI ANSWER
-
-        option_number = result.get(
-            "correct_option_number"
-        )
-
-        if (
-            option_number
-            and isinstance(
-                option_number,
-                int,
+        topic_classifier = (
+            TopicClassifier(
+                topics_file="topics.txt"
             )
-            and 1 <= option_number
-            <= len(question.options)
+        )
+
+        solver = AISolver(
+            api_key=api_key,
+
+            topics_text=(
+                topic_classifier
+                .get_topics_text()
+            ),
+        )
+
+        verifier = (
+            AnswerVerifier()
+        )
+
+        results = asyncio.run(
+            solver.solve_batch(
+                questions
+            )
+        )
+
+        solved_count = 0
+
+        for question, result in zip(
+            questions,
+            results,
         ):
 
-            question.ai_answer = (
-                question.options[
-                    option_number - 1
-                ]
+            if isinstance(
+                result,
+                Exception,
+            ):
+
+                print(
+                    f"Failed Q"
+                    f"{question.question_number}: "
+                    f"{result}"
+                )
+
+                continue
+
+            option_number = result.get(
+                "correct_option_number"
             )
 
-        # IMPORTANT FIX
-        # topic -> reasoning_type
+            if (
+                option_number
+                and isinstance(
+                    option_number,
+                    int,
+                )
+                and 1 <= option_number
+                <= len(question.options)
+            ):
 
-        question.reasoning_type = (
-            result.get("topic")
-        )
+                question.ai_answer = (
+                    question.options[
+                        option_number - 1
+                    ]
+                )
 
-        # SOLUTION
-
-        question.solution = (
-            result.get(
-                "solution"
+            question.reasoning_type = (
+                result.get(
+                    "topic"
+                )
             )
-        )
 
-        # VERIFICATION
-
-        question.verification_status = (
-            verifier.verify(
-                pdf_answer=(
-                    question.correct_answer
-                ),
-                ai_answer=(
-                    question.ai_answer
-                ),
+            question.solution = (
+                result.get(
+                    "solution"
+                )
             )
+
+            question.verification_status = (
+                verifier.verify(
+
+                    pdf_answer=(
+                        question.correct_answer
+                    ),
+
+                    ai_answer=(
+                        question.ai_answer
+                    ),
+                )
+            )
+
+            solved_count += 1
+
+        print(
+            f"AI solved: "
+            f"{solved_count}\n"
         )
 
-        solved_count += 1
+    else:
 
-    print(
-        f"\nAI solved: "
-        f"{solved_count}\n"
-    )
+        print(
+            "[4] AI solving skipped "
+            "(No API key)\n"
+        )
 
     # STEP 5
     # WRITE EXCEL
@@ -310,30 +337,40 @@ def main():
         "[5] Writing Excel..."
     )
 
+    output_path = Path(
+        "data/extracted/extracted_questions.xlsx"
+    )
+
     writer = ExcelWriter()
 
     writer.write(
+
         questions=questions,
+
         output_path=str(
             output_path
         ),
-        pdf_path=str(pdf_path),
+
+        pdf_path=str(
+            pdf_path
+        ),
     )
 
     print(
-        "\n=============================="
+        "\n======================="
     )
 
     print(
-        "Excel generated successfully"
+        "EXCEL GENERATED"
     )
 
     print(
-        f"Output: {output_path}"
+        f"Output: "
+        f"{output_path}"
     )
 
     print(
-        "==============================\n"
+        "=======================\n"
     )
 
 

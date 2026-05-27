@@ -1,6 +1,6 @@
 import re
 
-from src.models import Question
+from models import Question
 
 
 class QuestionParser:
