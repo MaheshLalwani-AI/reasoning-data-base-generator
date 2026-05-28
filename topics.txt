@@ -1,38 +1,188 @@
+# Reasoning Topic Taxonomy
+# One canonical topic per line.
+# Both regex_classifier and llm_classifier output one of these EXACT names.
+# Fallback: "Uncategorized".
 
-1.Coding – Decoding 
-2.Alphabet Test 
-3.Logical Sequence of Word 
-4.Missing Number 
-5.Symbols and Notations
-6.Series 
-7.Analogy 
-8.Classification 
-9.Direction and Distance 
-10.Blood Relation 
-11.Ranking 
-12.Seating Arrangement 
-13.Puzzles Logical Reasoning 
-14.Logical Vein Diagram 
-15.Syllogism 
-16.Statement and Conclusion 
-17.Statement and Assumption 
-18.Statement and Argument 
-19.Statement and Course of Action 
-20.Statement and Inference 
-21.Cause and Effect 
-22.Eligibility Test 
-23.Calendar 
-24.Clock 
-25.Arithmetical Reasoning 
-26.Inequalities 
-27.Cube & Dice 
-28.Figure Counting 
-29.Mirror Image & Water Image 
-30.Paper Folding 
-31.Paper Cutting 
-32.Embedded Figures 
-33.Completion of Figures 
-34.Formation of Figures 
-35.Fgure Analogy 
-36.Figure Classification 
-37.Figure Series Completion
+# === Seating & Arrangement ===
+Linear Seating Arrangement
+Linear Seating Arrangement (Single Row Facing Same Direction)
+Linear Seating Arrangement (Single Row Facing Different Directions)
+Linear Seating Arrangement (Two Rows Facing Each Other)
+Circular Seating Arrangement
+Circular Seating Arrangement (Facing Centre)
+Circular Seating Arrangement (Facing Outside)
+Circular Seating Arrangement (Mixed Facing)
+Square Seating Arrangement
+Rectangular Seating Arrangement
+Triangular Seating Arrangement
+Hexagonal Seating Arrangement
+Uncertain Number Seating Arrangement
+
+# === Puzzles ===
+Floor Puzzle
+Floor with Flat Puzzle
+Box Puzzle (Vertical Stack)
+Box Puzzle (Horizontal Arrangement)
+Month Based Puzzle
+Day Based Puzzle
+Date Based Puzzle
+Year/Age Puzzle
+Time Slot / Scheduling Puzzle
+Categorization Puzzle (Single Variable)
+Categorization Puzzle (Double Variable)
+Categorization Puzzle (Triple Variable)
+Comparison Puzzle
+Designation / Hierarchy Puzzle
+
+# === Blood Relations ===
+Blood Relations (General)
+Blood Relations (Pointing / Photograph)
+Blood Relations (Family Tree)
+Coded Blood Relations
+Generation Based Blood Relations
+
+# === Direction & Distance ===
+Direction Sense
+Direction Sense (Shortest Distance)
+Direction Sense (Final Direction)
+Coded Direction Sense
+Clock Based Direction
+
+# === Coding-Decoding ===
+Letter Coding (Substitution)
+Letter Coding (Shift / Skip)
+Number Coding
+Symbol Coding
+Mixed Letter-Number Coding
+Coded Equations / Symbol Operations
+Coded Word Logic
+Fictitious Language Coding
+Conditional Coding
+
+# === Series ===
+Number Series (Missing Term)
+Number Series (Wrong Term)
+Letter Series
+Alphanumeric Series
+Mixed Series
+Continuous Pattern Series
+Symbol Series
+
+# === Analogy ===
+Word Analogy
+Number Analogy
+Letter Analogy
+Mixed Analogy
+Choose Analogous Pair
+Figure Analogy
+
+# === Classification (Odd One Out) ===
+Word Classification
+Number Classification
+Letter Classification
+Mixed Classification
+Figure Classification
+
+# === Alphabet & Word Logic ===
+Alphabet Test (Position)
+Alphabet Test (After Operation)
+Alphabet Reversal
+Dictionary Order
+Word Formation (From Given Letters)
+Word Formation (Using Word Letters)
+Letter Pair / Cluster
+Jumbled Letters
+
+# === Logical Reasoning ===
+Syllogism (Two Statement)
+Syllogism (Three Statement)
+Syllogism (Reverse / Possibility)
+Statement and Conclusion
+Statement and Assumption
+Statement and Argument
+Statement and Course of Action
+Statement and Inference
+Cause and Effect
+Assertion and Reason
+Critical Reasoning
+Logical Deduction
+Strong and Weak Arguments
+
+# === Data Sufficiency ===
+Data Sufficiency (Two Statement)
+Data Sufficiency (Three Statement)
+
+# === Ranking & Order ===
+Ranking (Single Row)
+Ranking (Age / Height / Weight)
+Ranking (Marks / Score)
+Order and Sequence
+
+# === Input-Output ===
+Machine Input-Output (Shifting)
+Machine Input-Output (Arrangement)
+Machine Input-Output (Mixed Operations)
+
+# === Inequality ===
+Mathematical Inequality (Direct)
+Coded Inequality
+Filler Inequality
+
+# === Clock & Calendar ===
+Clock (Angle)
+Clock (Mirror / Water Image)
+Clock (Faulty / Gaining / Losing)
+Calendar (Day of the Week)
+Calendar (Odd Days)
+Calendar (Leap Year)
+
+# === Venn Diagram ===
+Venn Diagram (Classification)
+Venn Diagram (Data Based)
+Venn Diagram (Set Theory)
+
+# === Non-Verbal Reasoning ===
+Mirror Image
+Water Image
+Paper Folding
+Paper Cutting
+Embedded Figures
+Hidden Figures
+Counting Figures
+Figure Series
+Figure Analogy (Non-Verbal)
+Figure Classification (Non-Verbal)
+Figure Matrix
+Pattern Completion
+Image Formation
+Image Analysis
+Dot Situation
+Rule Detection
+Cube and Dice (Standard)
+Cube and Dice (Open / Net)
+Cube Construction (Painted Cube)
+Cube Construction (Cut Cube)
+
+# === Mathematical Operations Reasoning ===
+Mathematical Operations (Symbol Substitution)
+Mathematical Operations (Sign Interchange)
+BODMAS Based Reasoning
+Number Puzzle / Matrix
+
+# === Decision & Eligibility ===
+Decision Making
+Eligibility Test
+Course of Action
+
+# === Misc ===
+Logical Sequence of Words
+Missing Character / Number
+Analytical Reasoning
+Verbal Classification (Verbal Aptitude)
+Verbal Analogy
+Distance, Time and Direction
+Calendar and Time
+Theme Detection
+
+# === Fallback ===
+Uncategorized

@@ -14,6 +14,8 @@ class Question:
 
     question_text: str = ""
 
+    question_image: str = ""
+
     options: list[str] = field(
         default_factory=list
     )
@@ -25,5 +27,11 @@ class Question:
     verification_status: str = ""
 
     reasoning_type: str = ""
+
+    regex_topic: str = ""
+
+    llm_topic: str = ""
+
+    is_reasoning: bool = True
 
     solution: str = ""
