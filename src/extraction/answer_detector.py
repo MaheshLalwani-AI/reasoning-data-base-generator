@@ -21,6 +21,7 @@ class AnswerDetector:
         answers = {}
 
         current_question = None
+        current_question_page = None
 
         for page in self.document:
 
@@ -57,6 +58,7 @@ class AnswerDetector:
                         current_question = int(
                             q_match.group(1)
                         )
+                        current_question_page = page.number + 1
 
                         continue
 
@@ -84,7 +86,7 @@ class AnswerDetector:
                         if option_match:
 
                             answers[
-                                current_question
+                                (current_question_page, current_question)
                             ] = option_match.group(
                                 1
                             )

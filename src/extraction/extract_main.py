@@ -164,17 +164,19 @@ def process_pdf(
 
     for question in questions:
 
-        qno = (
-            question.question_number
+        # Match using composite key (Page, Question Number)
+        key = (
+            question.page_number,
+            question.question_number,
         )
 
-        if qno not in answers:
+        if key not in answers:
             continue
 
         try:
 
             option_number = int(
-                answers[qno]
+                answers[key]
             )
 
             option_index = (

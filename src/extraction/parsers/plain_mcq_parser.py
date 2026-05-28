@@ -71,8 +71,6 @@ class QuestionParser:
 
         questions = []
 
-        seen_questions = set()
-
         for page in pages:
 
             page_number = page.get(
@@ -121,13 +119,6 @@ class QuestionParser:
                         qno_match.group(1)
                     )
 
-                    if (
-                        question_number
-                        in seen_questions
-                    ):
-
-                        continue
-
                     parsed = (
                         self._parse_question(
                             chunk=chunk,
@@ -141,10 +132,6 @@ class QuestionParser:
 
                     questions.append(
                         parsed
-                    )
-
-                    seen_questions.add(
-                        question_number
                     )
 
                 except Exception as e:
@@ -270,7 +257,8 @@ class QuestionParser:
 
         for line in text.splitlines():
 
-            line = line.strip()
+            # Remove standard and Unicode whitespace noise
+            line = line.strip().strip('\xa0\ufeff\u200b')
 
             if not line:
                 continue
@@ -283,7 +271,12 @@ class QuestionParser:
             if "exammix" in lower:
                 continue
 
-            if len(line) <= 1:
+            # Remove artifacts
+            line = re.sub(r"(?i)\bAns\s*\d*\b", "", line).strip()
+            line = re.sub(r"(?i)[\s\.]+[xX]\s*$", "", line).strip()
+
+            # Skip if residue line
+            if not line or line.lower() in ('x', 'x.', '.x'):
                 continue
 
             lines.append(

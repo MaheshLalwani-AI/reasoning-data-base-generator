@@ -32,11 +32,13 @@ class QuestionParser:
     )
 
     METADATA_PATTERNS = [
-        r"Question Number\s*:\s*\d+",
-        r"Question Id\s*:\s*\d+",
-        r"Question Type\s*:\s*\w+",
-        r"Correct Marks\s*:\s*[\d\.]+",
-        r"Wrong Marks\s*:\s*[\d\.]+",
+        r"Question Number\s*:\s*.*",
+        r"Question Id\s*:\s*.*",
+        r"Question Type\s*:\s*.*",
+        r"Correct Marks\s*:\s*.*",
+        r"Wrong Marks\s*:\s*.*",
+        r"Status\s*:\s*.*",
+        r"Chosen\s*Option\s*:\s*.*",
     ]
 
     def parse_pages(
@@ -45,8 +47,6 @@ class QuestionParser:
     ) -> list[Question]:
 
         questions = []
-
-        seen_numbers = set()
 
         for page in pages:
 
@@ -95,13 +95,6 @@ class QuestionParser:
                             match.group(2)
                         )
 
-                        if (
-                            question_number
-                            in seen_numbers
-                        ):
-
-                            continue
-
                         parsed = (
                             self._parse_question(
                                 block=full_block,
@@ -116,10 +109,6 @@ class QuestionParser:
 
                         questions.append(
                             parsed
-                        )
-
-                        seen_numbers.add(
-                            question_number
                         )
 
                     except Exception as e:
@@ -217,17 +206,21 @@ class QuestionParser:
 
         for line in text.splitlines():
 
-            line = line.rstrip()
+            # Remove standard and Unicode whitespace noise
+            line = line.strip().strip('\xa0\ufeff\u200b')
 
-            if not line.strip():
+            if not line:
                 continue
 
-            if (
-                self._is_non_english_dominant(
-                    line
-                )
-            ):
+            if self._is_non_english_dominant(line):
+                continue
 
+            # Remove "Ans", "Ans X" and trailing 'x'/'X' markers (tick marks)
+            line = re.sub(r"(?i)\bAns\s*\d*\b", "", line).strip()
+            line = re.sub(r"(?i)\s+x\s*$", "", line).strip()
+
+            # Skip if line is just 'x' residue or empty
+            if not line or line.lower() == 'x':
                 continue
 
             cleaned_lines.append(
@@ -261,17 +254,20 @@ class QuestionParser:
                     option.splitlines()
                 ):
 
-                    line = line.rstrip()
+                    # Remove standard and Unicode whitespace noise
+                    line = line.strip().strip('\xa0\ufeff\u200b')
 
-                    if not line.strip():
+                    if not line:
                         continue
 
-                    if (
-                        self._is_non_english_dominant(
-                            line
-                        )
-                    ):
+                    if self._is_non_english_dominant(line):
+                        continue
 
+                    # Remove artifacts
+                    line = re.sub(r"(?i)\bAns\s*\d*\b", "", line).strip()
+                    line = re.sub(r"(?i)\s+x\s*$", "", line).strip()
+
+                    if not line or line.lower() == 'x':
                         continue
 
                     lines.append(
