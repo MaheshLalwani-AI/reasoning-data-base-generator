@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import fitz
+import io
 
 
 class PageImageExtractor:
@@ -73,6 +74,34 @@ class PageImageExtractor:
                             "ext",
                             "png",
                         )
+
+                        # Convert JPX to PNG for wider compatibility
+                        if ext.lower() == "jpx":
+                            try:
+                                from PIL import Image
+                                img_data = base["image"]
+                                image = Image.open(io.BytesIO(img_data))
+                                ext = "png"
+                                filename = (
+                                    f"page{page_number}"
+                                    f"_img{img_index + 1}"
+                                    f".{ext}"
+                                )
+                                file_path = self.output_dir / filename
+                                image.save(file_path, format="PNG")
+                                saved.append(str(file_path))
+                                continue # Skip default saving for JPX
+                            except ImportError:
+                                print(
+                                    "[image] Pillow not installed. "
+                                    "JPX images will be saved as is "
+                                    "and may not be viewable."
+                                )
+                            except Exception as img_conv_e:
+                                print(
+                                    f"[image] page {page_number} img {img_index+1}: "
+                                    f"Failed to convert JPX to PNG: {img_conv_e}"
+                                )
 
                         filename = (
                             f"page{page_number}"

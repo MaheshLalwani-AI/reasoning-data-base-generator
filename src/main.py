@@ -245,6 +245,10 @@ def process_pdf(
 
     image_cursor: dict[int, int] = {}
 
+    # For debugging image assignment
+    assigned_images_count = 0
+    skipped_images_count = 0
+
     filtered: list = []
 
     for question in questions:
@@ -298,6 +302,11 @@ def process_pdf(
             question.llm_topic = (
                 llm_result["llm_topic"]
             )
+            print(
+                f"[DEBUG] Q{question.question_number} "
+                f"Page {question.page_number}: "
+                f"LLM says is_reasoning={question.is_reasoning}, topic={question.llm_topic}"
+            )
 
         if not question.is_reasoning:
             continue
@@ -308,26 +317,41 @@ def process_pdf(
             or question.regex_topic
         )
 
+        print(
+            f"[DEBUG] Q{question.question_number} "
+            f"Page {question.page_number}: "
+            f"Topic for image check: {topic_for_image}"
+        )
+
         if (
             topic_for_image
             in IMAGE_BASED_TOPICS
         ):
+            print(
+                f"[DEBUG] Q{question.question_number} "
+                f"Page {question.page_number}: "
+                f"Identified as IMAGE_BASED_TOPIC."
+            )
 
             pool = page_images.get(
                 question.page_number,
                 [],
             )
+            print(f"[DEBUG] Page {question.page_number} image pool: {pool}")
 
             idx = image_cursor.get(
                 question.page_number,
                 0,
             )
+            print(f"[DEBUG] Page {question.page_number} image cursor index: {idx}")
 
             if idx < len(pool):
 
                 question.question_image = (
                     pool[idx]
                 )
+                print(f"[DEBUG] Assigned image {pool[idx]} to Q{question.question_number}")
+                assigned_images_count += 1
 
                 image_cursor[
                     question.page_number
