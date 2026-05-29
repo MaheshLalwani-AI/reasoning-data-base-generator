@@ -1,2 +1,47 @@
+# Environment
 .env
+.env.*
+!.env.example
+
+# Aider / editor helpers
 .aider*
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python build outputs
+build/
+dist/
+*.egg-info/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Windows downloaded-file metadata
+*:Zone.Identifier
+
+# Logs
+*.log
+
+# Local cache
+data/cache/
+
+# Generated image extraction output
+# Image extraction is disconnected now, so do not track extracted images.
+data/images/
+data/extracted/images/
+data/extracted_images/
+
+# Optional:
+# Keep this commented if you want generated Excel committed.
+# data/extracted/*.xlsx

@@ -2,21 +2,14 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from extraction.answer_detector import (
-    AnswerDetector,
+from classification import (
+    LLMClassifier,
+    RegexClassifier,
 )
 
-from extraction.excel_writer import (
-    ExcelWriter,
-)
-
-from extraction.extractor import (
-    PDFExtractor,
-)
-
-from extraction.image_extractor import (
-    PageImageExtractor,
-)
+from extraction.answer_detector import AnswerDetector
+from extraction.excel_writer import ExcelWriter
+from extraction.extractor import PDFExtractor
 
 from extraction.parsers.metadata_parser import (
     QuestionParser as MetadataParser,
@@ -26,52 +19,15 @@ from extraction.parsers.plain_mcq_parser import (
     QuestionParser as UniversalParser,
 )
 
-from classification import (
-    RegexClassifier,
-    LLMClassifier,
-)
-
-
-IMAGE_BASED_TOPICS = {
-    "Mirror Image",
-    "Water Image",
-    "Paper Folding",
-    "Paper Cutting",
-    "Embedded Figures",
-    "Hidden Figures",
-    "Counting Figures",
-    "Figure Series",
-    "Figure Analogy (Non-Verbal)",
-    "Figure Classification (Non-Verbal)",
-    "Figure Matrix",
-    "Pattern Completion",
-    "Image Formation",
-    "Image Analysis",
-    "Dot Situation",
-    "Rule Detection",
-    "Cube and Dice (Standard)",
-    "Cube and Dice (Open / Net)",
-    "Cube Construction (Painted Cube)",
-    "Cube Construction (Cut Cube)",
-    "Venn Diagram (Classification)",
-    "Venn Diagram (Data Based)",
-    "Venn Diagram (Set Theory)",
-    "Figure Classification",
-}
-
 
 def get_pdf_paths() -> list[Path]:
-
-    pdf_folder = Path(
-        "data/pdfs"
-    )
+    pdf_folder = Path("data/pdfs")
 
     pdf_files = sorted(
         pdf_folder.glob("*.pdf")
     )
 
     if not pdf_files:
-
         raise FileNotFoundError(
             "No PDFs found in data/pdfs"
         )
@@ -80,23 +36,14 @@ def get_pdf_paths() -> list[Path]:
 
 
 def choose_parser(pages):
-
     sample_text = ""
 
     for page in pages[:3]:
-
-        blocks = page.get(
-            "blocks",
-            [],
-        )
+        blocks = page.get("blocks", [])
 
         for block in blocks:
-
             sample_text += (
-                block.get(
-                    "text",
-                    "",
-                )
+                block.get("text", "")
                 + "\n"
             )
 
@@ -104,106 +51,20 @@ def choose_parser(pages):
         "Question Number" in sample_text
         and "Question Id" in sample_text
     ):
-
         print("Using metadata parser")
-
         return MetadataParser()
 
     print("Using universal parser")
-
     return UniversalParser()
 
 
-def process_pdf(
-    pdf_path: Path,
-    regex_clf: RegexClassifier,
-    llm_clf: LLMClassifier,
-):
-
-    print(
-        "\n======================="
-    )
-
-    print(
-        f"PROCESSING: {pdf_path.name}"
-    )
-
-    print(
-        "=======================\n"
-    )
-
-    # =========================================
-    # STEP 1 - extract pages
-    # =========================================
-    print("[1] Extracting PDF...")
-
-    extractor = PDFExtractor(
-        pdf_path=str(pdf_path)
-    )
-
-    pages = extractor.extract_pages()
-
-    print(
-        f"Pages extracted: "
-        f"{len(pages)}\n"
-    )
-
-    # =========================================
-    # STEP 1b - extract embedded images
-    # =========================================
-    print("[1b] Extracting images...")
-
-    image_extractor = PageImageExtractor(
-        pdf_path=str(pdf_path),
-        exam_name=pdf_path.stem,
-    )
-
-    page_images = (
-        image_extractor.extract()
-    )
-
-    print(
-        f"Pages with images: "
-        f"{len(page_images)}\n"
-    )
-
-    # =========================================
-    # STEP 2 - parse questions
-    # =========================================
-    print("[2] Parsing questions...")
-
-    parser = choose_parser(pages)
-
-    questions = parser.parse_pages(pages)
-
-    print(
-        f"Questions parsed: "
-        f"{len(questions)}\n"
-    )
-
-    exam_name = pdf_path.stem
+def apply_detected_answers(
+    questions,
+    answers: dict[tuple[int, int], str],
+) -> int:
+    applied_count = 0
 
     for question in questions:
-        question.exam_name = exam_name
-
-    # =========================================
-    # STEP 3 - detect answers
-    # =========================================
-    print("[3] Detecting answers...")
-
-    detector = AnswerDetector(
-        pdf_path=str(pdf_path)
-    )
-
-    answers = detector.detect_answers()
-
-    print(
-        f"Answers detected: "
-        f"{len(answers)}\n"
-    )
-
-    for question in questions:
-
         key = (
             question.page_number,
             question.question_number,
@@ -213,53 +74,35 @@ def process_pdf(
             continue
 
         try:
+            option_number = int(answers[key])
+            option_index = option_number - 1
 
-            option_number = int(
-                answers[key]
-            )
-
-            option_index = (
-                option_number - 1
-            )
-
-            if (
-                0
-                <= option_index
-                < len(question.options)
-            ):
+            if 0 <= option_index < len(question.options):
                 question.correct_answer = (
-                    question.options[
-                        option_index
-                    ]
+                    question.options[option_index]
                 )
+                applied_count += 1
 
         except Exception:
-            pass
+            continue
 
-    # =========================================
-    # STEP 4 - classify (regex hint + LLM)
-    # =========================================
-    print(
-        "[4] Classifying questions..."
-    )
+    return applied_count
 
-    image_cursor: dict[int, int] = {}
 
-    # For debugging image assignment
-    assigned_images_count = 0
-    skipped_images_count = 0
-
-    filtered: list = []
+def classify_questions(
+    questions,
+    regex_clf: RegexClassifier,
+    llm_clf: LLMClassifier,
+):
+    filtered = []
 
     for question in questions:
-
         text_for_clf = (
             question.question_text
             + "\n"
             + "\n".join(question.options)
         )
 
-        # ----- cheap regex pre-filter -----
         regex_result = regex_clf.classify(
             text_for_clf
         )
@@ -268,119 +111,160 @@ def process_pdf(
             regex_result["regex_topic"]
         )
 
-        # Hard drop: clearly non-reasoning
-        # (subject keywords present).
-        if (
-            regex_result["negative_hits"]
-            > 0
-        ):
+        if regex_result["negative_hits"] > 0:
             question.is_reasoning = False
             continue
 
-        # ----- LLM confirms + names topic -----
         llm_result = llm_clf.classify(
             text_for_clf
         )
 
-        llm_says = llm_result[
-            "is_reasoning"
-        ]
+        llm_says = llm_result["is_reasoning"]
 
         if llm_says is None:
-            # LLM unavailable -> trust
-            # the regex hint as a soft signal.
             question.is_reasoning = (
-                regex_result[
-                    "is_reasoning_hint"
-                ]
+                regex_result["is_reasoning_hint"]
             )
             question.llm_topic = ""
         else:
-            question.is_reasoning = (
-                llm_says
-            )
+            question.is_reasoning = llm_says
             question.llm_topic = (
                 llm_result["llm_topic"]
-            )
-            print(
-                f"[DEBUG] Q{question.question_number} "
-                f"Page {question.page_number}: "
-                f"LLM says is_reasoning={question.is_reasoning}, topic={question.llm_topic}"
             )
 
         if not question.is_reasoning:
             continue
 
-        # ----- attach image for non-verbal -----
-        topic_for_image = (
-            question.llm_topic
-            or question.regex_topic
-        )
-
-        print(
-            f"[DEBUG] Q{question.question_number} "
-            f"Page {question.page_number}: "
-            f"Topic for image check: {topic_for_image}"
-        )
-
-        if (
-            topic_for_image
-            in IMAGE_BASED_TOPICS
-        ):
-            print(
-                f"[DEBUG] Q{question.question_number} "
-                f"Page {question.page_number}: "
-                f"Identified as IMAGE_BASED_TOPIC."
-            )
-
-            pool = page_images.get(
-                question.page_number,
-                [],
-            )
-            print(f"[DEBUG] Page {question.page_number} image pool: {pool}")
-
-            idx = image_cursor.get(
-                question.page_number,
-                0,
-            )
-            print(f"[DEBUG] Page {question.page_number} image cursor index: {idx}")
-
-            if idx < len(pool):
-
-                question.question_image = (
-                    pool[idx]
-                )
-                print(f"[DEBUG] Assigned image {pool[idx]} to Q{question.question_number}")
-                assigned_images_count += 1
-
-                image_cursor[
-                    question.page_number
-                ] = idx + 1
-
         filtered.append(question)
-
-    print(
-        f"Reasoning questions kept: "
-        f"{len(filtered)} / "
-        f"{len(questions)}\n"
-    )
 
     return filtered
 
 
-def main():
+def build_report_row(
+    pdf_name: str,
+    pages_count: int,
+    parsed_count: int,
+    detected_answers_count: int,
+    applied_answers_count: int,
+    kept_count: int,
+) -> dict:
+    missing_answers_count = max(
+        parsed_count - applied_answers_count,
+        0,
+    )
 
+    if parsed_count:
+        answer_coverage = round(
+            applied_answers_count / parsed_count * 100,
+            2,
+        )
+    else:
+        answer_coverage = 0.0
+
+    return {
+        "pdf_name": pdf_name,
+        "pages_count": pages_count,
+        "parsed_questions": parsed_count,
+        "detected_answer_keys": detected_answers_count,
+        "applied_answers": applied_answers_count,
+        "missing_answers": missing_answers_count,
+        "answer_coverage_percent": answer_coverage,
+        "reasoning_questions_kept": kept_count,
+    }
+
+
+def process_pdf(
+    pdf_path: Path,
+    regex_clf: RegexClassifier,
+    llm_clf: LLMClassifier,
+):
+    print("\n=======================")
+    print(f"PROCESSING: {pdf_path.name}")
+    print("=======================\n")
+
+    print("[1] Extracting PDF...")
+
+    extractor = PDFExtractor(
+        pdf_path=str(pdf_path)
+    )
+
+    pages = extractor.extract_pages()
+
+    print(
+        f"Pages extracted: {len(pages)}\n"
+    )
+
+    print("[2] Parsing questions...")
+
+    parser = choose_parser(pages)
+    questions = parser.parse_pages(pages)
+
+    print(
+        f"Questions parsed: {len(questions)}\n"
+    )
+
+    exam_name = pdf_path.stem
+
+    for question in questions:
+        question.exam_name = exam_name
+
+    print("[3] Detecting answers...")
+
+    detector = AnswerDetector(
+        pdf_path=str(pdf_path)
+    )
+
+    answers = detector.detect_answers()
+
+    print(
+        f"Answer keys detected: {len(answers)}"
+    )
+
+    applied_answers_count = apply_detected_answers(
+        questions=questions,
+        answers=answers,
+    )
+
+    print(
+        f"Answers applied to parsed questions: "
+        f"{applied_answers_count}\n"
+    )
+
+    print("[4] Classifying questions...")
+
+    filtered = classify_questions(
+        questions=questions,
+        regex_clf=regex_clf,
+        llm_clf=llm_clf,
+    )
+
+    print(
+        f"Reasoning questions kept: "
+        f"{len(filtered)} / {len(questions)}\n"
+    )
+
+    report_row = build_report_row(
+        pdf_name=pdf_path.name,
+        pages_count=len(pages),
+        parsed_count=len(questions),
+        detected_answers_count=len(answers),
+        applied_answers_count=applied_answers_count,
+        kept_count=len(filtered),
+    )
+
+    return filtered, report_row
+
+
+def main():
     load_dotenv()
 
     pdf_paths = get_pdf_paths()
 
     print(
-        f"\nPDFs found: "
-        f"{len(pdf_paths)}\n"
+        f"\nPDFs found: {len(pdf_paths)}\n"
     )
 
     regex_clf = RegexClassifier()
-
     llm_clf = LLMClassifier()
 
     if llm_clf.enabled:
@@ -395,33 +279,41 @@ def main():
         )
 
     all_questions = []
+    report_rows = []
 
     for pdf_path in pdf_paths:
-
         try:
-
-            questions = process_pdf(
-                pdf_path,
-                regex_clf,
-                llm_clf,
+            questions, report_row = process_pdf(
+                pdf_path=pdf_path,
+                regex_clf=regex_clf,
+                llm_clf=llm_clf,
             )
 
-            all_questions.extend(
-                questions
-            )
+            all_questions.extend(questions)
+            report_rows.append(report_row)
 
         except Exception as e:
-
             print(
-                f"\nFAILED: "
-                f"{pdf_path.name}"
+                f"\nFAILED: {pdf_path.name}"
             )
-
             print(e)
 
+            report_rows.append(
+                {
+                    "pdf_name": pdf_path.name,
+                    "pages_count": 0,
+                    "parsed_questions": 0,
+                    "detected_answer_keys": 0,
+                    "applied_answers": 0,
+                    "missing_answers": 0,
+                    "answer_coverage_percent": 0.0,
+                    "reasoning_questions_kept": 0,
+                    "error": str(e),
+                }
+            )
+
     output_path = Path(
-        "data/extracted/"
-        "extracted_questions.xlsx"
+        "data/extracted/extracted_questions.xlsx"
     )
 
     print("\n[5] Writing Excel...")
@@ -431,21 +323,32 @@ def main():
     writer.write(
         questions=all_questions,
         output_path=str(output_path),
+        report_rows=report_rows,
     )
 
-    print(
-        "\n======================="
+    total_questions = sum(
+        row.get("parsed_questions", 0)
+        for row in report_rows
     )
 
+    total_applied_answers = sum(
+        row.get("applied_answers", 0)
+        for row in report_rows
+    )
+
+    total_missing_answers = sum(
+        row.get("missing_answers", 0)
+        for row in report_rows
+    )
+
+    print("\n=======================")
     print("EXCEL GENERATED")
-
-    print(
-        f"Output: {output_path}"
-    )
-
-    print(
-        "=======================\n"
-    )
+    print(f"Output: {output_path}")
+    print("-----------------------")
+    print(f"Total parsed questions: {total_questions}")
+    print(f"Total applied answers: {total_applied_answers}")
+    print(f"Total missing answers: {total_missing_answers}")
+    print("=======================\n")
 
 
 if __name__ == "__main__":
