@@ -17,6 +17,7 @@ class ExcelWriter:
         "Option 2",
         "Option 3",
         "Option 4",
+        "Option 5",
         "Correct Answer",
         "AI Answer",
         "Verification Status",
@@ -82,7 +83,7 @@ class ExcelWriter:
         for question in questions:
             options = list(question.options)
 
-            while len(options) < 4:
+            while len(options) < 5:
                 options.append("")
 
             row = [
@@ -94,6 +95,7 @@ class ExcelWriter:
                 options[1],
                 options[2],
                 options[3],
+                options[4],
                 question.correct_answer,
                 question.ai_answer,
                 question.verification_status,

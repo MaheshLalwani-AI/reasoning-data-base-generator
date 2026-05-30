@@ -14,6 +14,10 @@ class QuestionParser:
         (?=
             Q\.\d+
             |
+            Correct\s*Option
+            |
+            Correct\s*Answer
+            |
             \Z
         )
         """,
@@ -31,6 +35,10 @@ class QuestionParser:
         (?=
             ^\s*\d+\.\s+
             |
+            Correct\s*Option
+            |
+            Correct\s*Answer
+            |
             \Z
         )
         """,
@@ -46,6 +54,10 @@ class QuestionParser:
         )
         (?=
             Que\.\s*\d+
+            |
+            Correct\s*Option
+            |
+            Correct\s*Answer
             |
             \Z
         )
@@ -85,16 +97,31 @@ class QuestionParser:
     )
 
     # Pattern for numbered options: "1.", "2.", etc.
+    # Handles optional prefixes like:
+    #   "x 1." / "X 1."  (crossed-out/wrong)
+    #   "s/ 1."          (ticked/correct)
+    #   "^ 1." / "\^ 1." (ticked/correct)
+    #   "Ans 1."         (answer declaration)
+    #   "Ans x 1."       (answer crossed-out)
+    #   "Ans A 1."       (lettered answer + numbered option)
+    #   "Ans s/ 1."      (ticked answer)
+    #   "Ans ^ 1."       (ticked answer)
+    #   "Ans X 1."       (crossed-out answer)
     OPTION_PATTERN = re.compile(
         r"""
+        ^\s*
         (?:
-            Ans\s*
+            Ans\s+
         )?
+        (?:
+            [xX]|s/|\^|\\\^
+        )?
+        \s*
         (\d+)\.
         \s*
         (.*?)
         (?=
-            (?:Ans\s*)?\d+\.
+            \s*(?:(?:[xX]|s/|\^|\\\^)?\s*(?:Ans\s+)?\d+\.)
             |
             Question\s*ID
             |
@@ -102,10 +129,20 @@ class QuestionParser:
             |
             Status
             |
+            Correct\s*Option
+            |
+            Correct\s*Answer
+            |
+            ^\s*\d+\.\s+\d+[^\.]
+            |
+            ^\s*Que\.\s*\d+
+            |
+            \bPage\s*-\s*\d+
+            |
             \Z
         )
         """,
-        re.DOTALL | re.VERBOSE,
+        re.DOTALL | re.VERBOSE | re.MULTILINE,
     )
 
     # Pattern for lettered options: "(a)", "(b)", "(c)", "(d)",
@@ -126,6 +163,8 @@ class QuestionParser:
             |
             Correct\s*Option
             |
+            Correct\s*Answer
+            |
             \Z
         )
         """,
@@ -143,6 +182,8 @@ class QuestionParser:
             \d+\.\)
             |
             Correct\s*Option
+            |
+            Correct\s*Answer
             |
             \Z
         )
@@ -243,6 +284,7 @@ class QuestionParser:
                             chunk=chunk,
                             page_number=page_number,
                             question_number=question_number,
+                            qno_match=qno_match,
                         )
                     )
 
@@ -266,9 +308,17 @@ class QuestionParser:
         chunk,
         page_number,
         question_number,
+        qno_match=None,
     ):
 
         question_id = ""
+
+        # Remove question number prefix from chunk text
+        # (e.g., "Que. 2", "Q.5", "1.") so it doesn't leak into question text
+        if qno_match:
+            chunk = self.QUESTION_NUMBER_PATTERN_QUE.sub("", chunk, count=1)
+            chunk = self.QUESTION_NUMBER_PATTERN.sub("", chunk, count=1)
+            chunk = self.QUESTION_NUMBER_PATTERN_PLAIN.sub("", chunk, count=1)
 
         qid_match = (
             self.QUESTION_ID_PATTERN.search(
@@ -439,7 +489,7 @@ class QuestionParser:
             question_number=question_number,
             question_id=question_id,
             question_text=question_text,
-            options=options[:4],
+            options=options[:5],
             correct_answer="",
             ai_answer="",
             verification_status="",
@@ -470,12 +520,26 @@ class QuestionParser:
             if "exammix" in lower:
                 continue
 
-            # Remove artifacts
-            line = re.sub(r"(?i)\bAns\s*\d*\b", "", line).strip()
-            line = re.sub(r"(?i)[\s\.]+[xX]\s*$", "", line).strip()
+            # Remove answer/prefix artifacts that may bleed into option text
+            # Remove leading "Ans X", "Ans x", "Ans", etc.
+            line = re.sub(r"^(?:\s*Ans\s*[xXs/^]?\s*)", "", line).strip()
+            # Remove leading "x" / "X" / "s/" / "^" / "\^" prefixes (answer markers)
+            line = re.sub(r"^[xXs/^\\]+\s*", "", line).strip()
+            # Remove trailing "x" / "X" answer markers (e.g., after option text)
+            line = re.sub(r"\s+[xX]\s*$", "", line).strip()
+            # Remove leading ")" from option text (e.g., ") Uncle")
+            line = re.sub(r"^\)\s*", "", line).strip()
+
+            # Remove "Page - N" or "Page N" artifacts bleeding into text
+            line = re.sub(r"\bPage\s*-\s*\d+\b", "", line).strip()
+            line = re.sub(r"\bPage\s+\d+\b", "", line).strip()
 
             # Skip if residue line
-            if not line or line.lower() in ('x', 'x.', '.x'):
+            if not line or line.lower() in ('x', 'x.', '.x', 's/', '^', '\\^'):
+                continue
+
+            # Filter garbled non-English text (Malayalam/other script artifacts)
+            if self._is_garbled_text(line):
                 continue
 
             lines.append(
@@ -485,3 +549,24 @@ class QuestionParser:
         return "\n".join(
             lines
         ).strip()
+
+    @staticmethod
+    def _is_garbled_text(text: str) -> bool:
+        """Detect garbled/corrupted non-English text from PDF extraction."""
+        if not text:
+            return False
+        # Count valid English/ASCII characters
+        valid_chars = len(
+            re.findall(
+                r"[A-Za-z0-9\s\.\,\?\!\(\)\[\]\{\}\+\-\*\/\=\>\<\@\#\$\%\^\&\:\;\"\'\`\~\|\\\\]",
+                text,
+            )
+        )
+        total_chars = len(text.strip())
+        if total_chars == 0:
+            return False
+        # Exempt very short text (could be math answers like "42°")
+        if total_chars < 5:
+            return False
+        # If less than 40% valid characters, it's likely garbled
+        return (valid_chars / total_chars) < 0.4

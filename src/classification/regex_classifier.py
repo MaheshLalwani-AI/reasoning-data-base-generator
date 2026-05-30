@@ -33,18 +33,20 @@ class RegexClassifier:
         # ----- Seating -----
         "Linear Seating Arrangement": [
             "row", "linear", "left end", "right end",
-            "straight line", "sitting", "seated",
+            "straight line", "straight row",
+            "facing north", "facing south",
         ],
         "Linear Seating Arrangement (Two Rows Facing Each Other)": [
             "two rows", "parallel rows",
-            "facing each other", "facing north",
-            "facing south",
+            "facing each other", "row 1", "row 2",
         ],
         "Circular Seating Arrangement": [
             "circular", "round table",
             "facing the centre", "facing the center",
             "facing outside", "facing outward",
             "facing inward", "around a circular",
+            "sitting around", "seated around",
+            "around a table", "sitting in a circle",
         ],
         "Square Seating Arrangement": [
             "square table", "square shaped",
@@ -84,10 +86,20 @@ class RegexClassifier:
             "shelf", "shelves", "rack",
         ],
         "Month Based Puzzle": [
-            "january", "february", "march", "april",
-            "may", "june", "july", "august",
-            "september", "october", "november",
-            "december", "different months",
+            "different months", "born in the month",
+            "scheduled in", "event in january",
+            "event in february", "event in march",
+            "event in april", "event in may",
+            "event in june", "event in july",
+            "event in august", "event in september",
+            "event in october", "event in november",
+            "event in december",
+            "month of january", "month of february",
+            "month of march", "month of april",
+            "month of may", "month of june",
+            "month of july", "month of august",
+            "month of september", "month of october",
+            "month of november", "month of december",
         ],
         "Day Based Puzzle": [
             "monday", "tuesday", "wednesday",
@@ -198,8 +210,10 @@ class RegexClassifier:
             "coded number",
         ],
         "Symbol Coding": [
-            "symbol code", "@", "#", "$", "%", "&",
-            "*", "coded using symbols",
+            "symbol code", "coded using symbols",
+            "@ symbol", "# symbol",
+            "symbol series", "following symbols",
+            "letter, symbol", "letter symbol",
         ],
         "Mixed Letter-Number Coding": [
             "letter cluster", "letter-cluster",
@@ -252,7 +266,8 @@ class RegexClassifier:
 
         # ----- Analogy -----
         "Word Analogy": [
-            "is to", "as", "analogous", "analogy",
+            "is to", "analogous", "analogy",
+            "same relationship", "choose the analogous",
         ],
         "Number Analogy": [
             "number analogy",
@@ -672,6 +687,15 @@ class RegexClassifier:
         "error detection",
         "para completion",
         "sentence completion",
+        "parts of the following sentence",
+        "substitute the underlined",
+        "select the most appropriate",
+        "underlined segment",
+        "contains an error",
+        "no error",
+        "the following sentence has been",
+        "sentence has been given",
+        "most appropriate option",
 
         # GK / Current Affairs
         "prime minister", "president of",
@@ -720,6 +744,20 @@ class RegexClassifier:
         "export", "import",
         "treaty", "summit",
         "organization",
+        "in which year",
+        "who discovered",
+        "who invented",
+        "founded by",
+        "established in",
+        "known for",
+        "famous for",
+        "located in",
+        "refers to",
+        "is related to",
+        "is known as",
+        "was born",
+        "belongs to",
+        "is called",
 
         # Computer Awareness
         "cpu", "ram", "rom", "hard drive",
@@ -811,6 +849,14 @@ class RegexClassifier:
         if not text:
             return self._empty_result()
 
+        # Guard: if the text is predominantly non-Latin script
+        # (e.g. Malayalam, Devanagari) the keyword patterns won't
+        # apply meaningfully — return Uncategorized immediately.
+        latin_chars = sum(1 for c in text if c.isascii() and c.isalpha())
+        total_alpha = sum(1 for c in text if c.isalpha())
+        if total_alpha > 10 and latin_chars / total_alpha < 0.5:
+            return self._empty_result()
+
         normalized = re.sub(
             r"\s+",
             " ",
@@ -843,6 +889,29 @@ class RegexClassifier:
             )
 
         # ---- decisions ----
+        # Topic specificity weights: more-specific topics get a
+        # tie-breaking bonus so they beat their generic parents.
+        SPECIFICITY_BONUS: dict[str, int] = {
+            "Circular Seating Arrangement": 1,
+            "Square Seating Arrangement": 1,
+            "Rectangular Seating Arrangement": 1,
+            "Triangular Seating Arrangement": 1,
+            "Hexagonal Seating Arrangement": 1,
+            "Linear Seating Arrangement (Two Rows Facing Each Other)": 1,
+            "Floor with Flat Puzzle": 1,
+            "Box Puzzle (Horizontal Arrangement)": 1,
+            "Syllogism (Three Statement)": 1,
+            "Syllogism (Reverse / Possibility)": 1,
+            "Data Sufficiency (Three Statement)": 1,
+            "Direction Sense (Shortest Distance)": 1,
+            "Direction Sense (Final Direction)": 1,
+            "Coded Direction Sense": 1,
+            "Blood Relations (Pointing / Photograph)": 1,
+            "Blood Relations (Family Tree)": 1,
+            "Coded Blood Relations": 1,
+            "Generation Based Blood Relations": 1,
+        }
+
         reasoning_hits = sum(
             topic_hits.values()
         )
@@ -856,7 +925,9 @@ class RegexClassifier:
 
             best_topic = max(
                 topic_hits.items(),
-                key=lambda kv: kv[1],
+                key=lambda kv: (
+                    kv[1] + SPECIFICITY_BONUS.get(kv[0], 0)
+                ),
             )[0]
 
             regex_topic = ensure_canonical(

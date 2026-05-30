@@ -1,5 +1,6 @@
 import fitz
 import re
+from collections import defaultdict
 
 
 class AnswerDetector:
@@ -34,24 +35,6 @@ class AnswerDetector:
         re.IGNORECASE | re.VERBOSE,
     )
 
-    OPTION_PATTERN = re.compile(
-        r"""
-        ^\s*
-        (?:
-            Ans\s*
-        )?
-        (?:
-            Option\s*
-        )?
-        \(?
-        ([1-4A-D])
-        \)?
-        \s*
-        [.)\-:]
-        """,
-        re.IGNORECASE | re.VERBOSE,
-    )
-
     TICK_MARKS = (
         "✓",
         "✔",
@@ -61,6 +44,47 @@ class AnswerDetector:
         "[X]",
         "(x)",
         "(X)",
+    )
+
+    # Pattern to identify an answer-marking prefix on an option line
+    # Prefix can be: x, X (wrong), s/, ^, \^ (correct)
+    # The line may optionally start with "Ans " followed by the prefix
+    ANSWER_PREFIX_PATTERN = re.compile(
+        r"""
+        ^\s*
+        (?:
+            Ans\s+
+        )?
+        (?P<prefix>
+            [xX]
+            |
+            s/
+            |
+            \^
+            |
+            \\\^
+        )?
+        \s*
+        """,
+        re.IGNORECASE | re.VERBOSE,
+    )
+
+    # Extract the numeric option number from a line like "1. text" or "Ans A 1. text"
+    # Handles:
+    #   "1." / "1)" / "1:" / "1 -"
+    #   "A 1." / "A) 1." (letter + option number combos)
+    # Does NOT match letters like "A)" / "a." / "B."
+    OPTION_NUMBER_PATTERN = re.compile(
+        r"""
+        (?:
+            [a-dA-D]
+            \s*
+        )?
+        ([1-4])
+        \s*
+        [.)\-:]
+        """,
+        re.VERBOSE,
     )
 
     def __init__(
@@ -74,7 +98,23 @@ class AnswerDetector:
     def detect_answers(
         self,
     ) -> dict:
+        """Detect correct answers per (page_number, question_number).
+
+        Strategy: For each question, collect all its associated option lines.
+        Determine the correct answer by checking the prefix on each option line:
+        - Lines starting with 's/' or '^' or '\\^' are correct (ticked)
+        - Lines starting with 'x' or 'X' are incorrect (crossed out)
+        - Lines with no prefix but following an 'Ans' line may be assumed correct
+          if all other options have 'x'/'X' prefixes (implicit correct answer)
+        """
         answers = {}
+
+        # Per-question: collect all option lines and their prefix markers
+        # Key: (page_number, question_number)
+        # Value: list of (option_number, prefix_type) where prefix_type is
+        #        'correct' (s/, ^, \^), 'wrong' (x, X), or 'neutral' (no prefix)
+        question_options = defaultdict(list)
+        question_has_ans_line = defaultdict(bool)
 
         current_question = None
         current_question_page = None
@@ -110,6 +150,7 @@ class AnswerDetector:
                     if not line_text:
                         continue
 
+                    # Check for question start
                     q_match = self.QUESTION_PATTERN.search(
                         line_text
                     )
@@ -123,36 +164,115 @@ class AnswerDetector:
                     if not current_question:
                         continue
 
+                    key = (
+                        current_question_page,
+                        current_question,
+                    )
+
+                    # Check for direct answer patterns (Correct Answer: X)
                     direct_answer = self._extract_direct_answer(
                         line_text
                     )
 
                     if direct_answer:
-                        answers[
-                            (
-                                current_question_page,
-                                current_question,
-                            )
-                        ] = direct_answer
+                        answers[key] = direct_answer
                         continue
 
-                    option_number = self._extract_option_number(
+                    # Track if this question has an "Ans" line
+                    if re.match(
+                        r"^\s*Ans\s",
+                        line_text,
+                        flags=re.IGNORECASE,
+                    ):
+                        question_has_ans_line[
+                            key
+                        ] = True
+
+                    # Extract the prefix and option number
+                    result = self._extract_option_info(
                         line_text
                     )
 
-                    if not option_number:
+                    if result is None:
+                        # Check for tick marks in the text itself
+                        if any(
+                            mark in line_text
+                            for mark in self.TICK_MARKS
+                        ):
+                            # Try to extract option number from this line
+                            opt_num = self._extract_any_option_number(
+                                line_text
+                            )
+                            if opt_num:
+                                question_options[
+                                    key
+                                ].append(
+                                    (
+                                        opt_num,
+                                        "correct",
+                                    )
+                                )
                         continue
 
-                    if self._line_is_marked_correct(
-                        line_text=line_text,
-                        spans=spans,
-                    ):
-                        answers[
-                            (
-                                current_question_page,
-                                current_question,
-                            )
-                        ] = option_number
+                    option_number, prefix_type = result
+
+                    question_options[key].append(
+                        (
+                            option_number,
+                            prefix_type,
+                        )
+                    )
+
+        # Resolve answers from collected option data
+        for key, options in question_options.items():
+            if key in answers:
+                continue  # Already resolved via direct answer
+
+            # Strategy 1: Find options explicitly marked as correct (s/, ^, \^)
+            correct_options = [
+                opt_num
+                for opt_num, ptype in options
+                if ptype == "correct"
+            ]
+
+            if len(correct_options) == 1:
+                answers[key] = correct_options[0]
+                continue
+
+            if len(correct_options) > 1:
+                # Multiple correct marks - use the first one found
+                answers[key] = correct_options[0]
+                continue
+
+            # Strategy 2: If no explicit correct marks, find the one option
+            # that is NOT marked as wrong (x/X), assuming all others are x'd
+            wrong_options = {
+                opt_num
+                for opt_num, ptype in options
+                if ptype == "wrong"
+            }
+
+            neutral_options = [
+                opt_num
+                for opt_num, ptype in options
+                if ptype == "neutral"
+            ]
+
+            if len(neutral_options) == 1 and len(wrong_options) >= 1:
+                # The single unmarked option is the correct answer
+                # (all other options were crossed out)
+                answers[key] = neutral_options[0]
+                continue
+
+            # Strategy 3: Check for green-colored spans on option lines
+            # (for PDFs that use color highlighting for correct answers)
+            green_answer = self._find_green_answer_in_document(
+                key
+            )
+
+            if green_answer:
+                answers[key] = green_answer
+                continue
 
         return answers
 
@@ -171,20 +291,72 @@ class AnswerDetector:
             match.group(1)
         )
 
-    def _extract_option_number(
+    def _extract_option_info(
         self,
         text: str,
-    ) -> str | None:
-        match = self.OPTION_PATTERN.search(
+    ) -> tuple | None:
+        """Extract (option_number, prefix_type) from a line like:
+        'x 1. text' -> ('1', 'wrong')
+        's/ 2. text' -> ('2', 'correct')
+        'Ans A 1. text' -> ('1', 'neutral')
+        '3. text' -> ('3', 'neutral')
+        'Ans s/ 1. text' -> ('1', 'correct')
+        'Ans X 3. text' -> ('3', 'wrong')
+        Returns None if line is not an option line.
+        """
+        # First, check if this line looks like an option line
+        # (has a number followed by period/dash/colon)
+        opt_match = self.OPTION_NUMBER_PATTERN.search(
             text
         )
 
-        if not match:
+        if not opt_match:
             return None
 
-        return self._normalize_option(
-            match.group(1)
+        option_number = opt_match.group(1)
+
+        # Check prefix
+        prefix_match = self.ANSWER_PREFIX_PATTERN.match(
+            text
         )
+
+        prefix_raw = (
+            prefix_match.group("prefix")
+            if prefix_match
+            else None
+        )
+
+        if prefix_raw is None:
+            prefix_type = "neutral"
+        elif prefix_raw.lower() == "x":
+            prefix_type = "wrong"
+        elif prefix_raw in (
+            "s/",
+            "^",
+            "\\^",
+        ):
+            prefix_type = "correct"
+        else:
+            prefix_type = "neutral"
+
+        return (
+            option_number,
+            prefix_type,
+        )
+
+    def _extract_any_option_number(
+        self,
+        text: str,
+    ) -> str | None:
+        """Extract any option number (1-4) from text, used as fallback."""
+        match = self.OPTION_NUMBER_PATTERN.search(
+            text
+        )
+
+        if match:
+            return match.group(1)
+
+        return None
 
     def _normalize_option(
         self,
@@ -212,30 +384,73 @@ class AnswerDetector:
 
         return None
 
-    def _line_is_marked_correct(
+    def _find_green_answer_in_document(
         self,
-        line_text: str,
-        spans: list,
-    ) -> bool:
-        if any(
-            mark in line_text
-            for mark in self.TICK_MARKS
-        ):
-            return True
+        target_key: tuple,
+    ) -> str | None:
+        """Search document for green-colored option text for a specific question.
 
-        if re.search(
-            r"\bAns\s*[1-4A-D]?\b",
-            line_text,
-            flags=re.IGNORECASE,
-        ):
-            return True
+        Used as fallback for PDFs that highlight correct answers in green.
+        """
+        for page in self.document:
+            page_number = page.number + 1
 
-        return any(
-            self._span_is_green(
-                span
+            if page_number != target_key[0]:
+                # Only check the target page to be efficient
+                continue
+
+            text_dict = page.get_text(
+                "dict"
             )
-            for span in spans
-        )
+
+            for block in text_dict.get(
+                "blocks",
+                [],
+            ):
+                if "lines" not in block:
+                    continue
+
+                for line in block["lines"]:
+                    spans = line.get(
+                        "spans",
+                        [],
+                    )
+
+                    line_text = "".join(
+                        span.get(
+                            "text",
+                            "",
+                        )
+                        for span in spans
+                    ).strip()
+
+                    if not line_text:
+                        continue
+
+                    # Check if this is an option line for the target question
+                    opt_match = self.OPTION_NUMBER_PATTERN.search(
+                        line_text
+                    )
+
+                    if not opt_match:
+                        continue
+
+                    option_number = opt_match.group(1)
+
+                    # Check if any span has green color
+                    any_green = any(
+                        self._span_is_green(
+                            span
+                        )
+                        for span in spans
+                    )
+
+                    if any_green:
+                        return self._normalize_option(
+                            option_number
+                        )
+
+        return None
 
     def _span_is_green(
         self,
