@@ -70,11 +70,39 @@ class ParserRouter:
             sample_text,
         )
 
+        # Also detect "1.)" / "2.)" style option numbering
+        option_pattern_alt = re.search(
+            r"\d+\.\)",
+            sample_text,
+        )
+
         if (
             plain_mcq_pattern
             and
-            option_pattern
+            (
+                option_pattern
+                or
+                option_pattern_alt
+            )
         ):
+
+            print(
+                "Detected: plain_mcq_parser"
+            )
+
+            return (
+                self.plain_mcq_parser.parse_pages(
+                    pages
+                )
+            )
+
+        # Also detect "Que. 1" / "Que. 2" style numbering
+        que_pattern = re.search(
+            r"Que\.\s*\d+",
+            sample_text,
+        )
+
+        if que_pattern:
 
             print(
                 "Detected: plain_mcq_parser"

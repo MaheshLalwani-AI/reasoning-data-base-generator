@@ -30,8 +30,6 @@ class Question:
 
     regex_topic: str = ""
 
-    llm_topic: str = ""
-
     is_reasoning: bool = True
 
     solution: str = ""

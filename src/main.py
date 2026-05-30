@@ -1,9 +1,6 @@
 from pathlib import Path
 
-from dotenv import load_dotenv
-
 from classification import (
-    LLMClassifier,
     RegexClassifier,
 )
 
@@ -92,7 +89,6 @@ def apply_detected_answers(
 def classify_questions(
     questions,
     regex_clf: RegexClassifier,
-    llm_clf: LLMClassifier,
 ):
     filtered = []
 
@@ -115,22 +111,9 @@ def classify_questions(
             question.is_reasoning = False
             continue
 
-        llm_result = llm_clf.classify(
-            text_for_clf
+        question.is_reasoning = (
+            regex_result["is_reasoning_hint"]
         )
-
-        llm_says = llm_result["is_reasoning"]
-
-        if llm_says is None:
-            question.is_reasoning = (
-                regex_result["is_reasoning_hint"]
-            )
-            question.llm_topic = ""
-        else:
-            question.is_reasoning = llm_says
-            question.llm_topic = (
-                llm_result["llm_topic"]
-            )
 
         if not question.is_reasoning:
             continue
@@ -176,7 +159,6 @@ def build_report_row(
 def process_pdf(
     pdf_path: Path,
     regex_clf: RegexClassifier,
-    llm_clf: LLMClassifier,
 ):
     print("\n=======================")
     print(f"PROCESSING: {pdf_path.name}")
@@ -235,7 +217,6 @@ def process_pdf(
     filtered = classify_questions(
         questions=questions,
         regex_clf=regex_clf,
-        llm_clf=llm_clf,
     )
 
     print(
@@ -256,7 +237,6 @@ def process_pdf(
 
 
 def main():
-    load_dotenv()
 
     pdf_paths = get_pdf_paths()
 
@@ -265,18 +245,6 @@ def main():
     )
 
     regex_clf = RegexClassifier()
-    llm_clf = LLMClassifier()
-
-    if llm_clf.enabled:
-        print(
-            "LLM classifier: ENABLED "
-            f"({llm_clf.model})\n"
-        )
-    else:
-        print(
-            "LLM classifier: disabled "
-            "(no OPENROUTER_API_KEY)\n"
-        )
 
     all_questions = []
     report_rows = []
@@ -286,7 +254,6 @@ def main():
             questions, report_row = process_pdf(
                 pdf_path=pdf_path,
                 regex_clf=regex_clf,
-                llm_clf=llm_clf,
             )
 
             all_questions.extend(questions)

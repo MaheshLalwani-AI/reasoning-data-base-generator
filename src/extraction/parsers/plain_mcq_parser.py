@@ -5,6 +5,7 @@ from models import Question
 
 class QuestionParser:
 
+    # Pattern for "Q.1", "Q.2", etc.
     QUESTION_PATTERN = re.compile(
         r"""
         (
@@ -19,8 +20,50 @@ class QuestionParser:
         re.DOTALL | re.VERBOSE,
     )
 
+    # Pattern for plain "1.", "2.", etc. at start of a line.
+    # Captures the full question text (number + content) in group 1.
+    QUESTION_PATTERN_PLAIN = re.compile(
+        r"""
+        (
+            ^\s*\d+\.\s+
+            .*?
+        )
+        (?=
+            ^\s*\d+\.\s+
+            |
+            \Z
+        )
+        """,
+        re.DOTALL | re.MULTILINE | re.VERBOSE,
+    )
+
+    # Pattern for "Que. 1", "Que. 2", etc.
+    QUESTION_PATTERN_QUE = re.compile(
+        r"""
+        (
+            Que\.\s*\d+\s*
+            .*?
+        )
+        (?=
+            Que\.\s*\d+
+            |
+            \Z
+        )
+        """,
+        re.DOTALL | re.VERBOSE,
+    )
+
     QUESTION_NUMBER_PATTERN = re.compile(
         r"Q\.(\d+)"
+    )
+
+    QUESTION_NUMBER_PATTERN_PLAIN = re.compile(
+        r"^\s*(\d+)\.",
+        re.MULTILINE,
+    )
+
+    QUESTION_NUMBER_PATTERN_QUE = re.compile(
+        r"Que\.\s*(\d+)",
     )
 
     QUESTION_ID_PATTERN = re.compile(
@@ -41,6 +84,7 @@ class QuestionParser:
         re.VERBOSE,
     )
 
+    # Pattern for numbered options: "1.", "2.", etc.
     OPTION_PATTERN = re.compile(
         r"""
         (?:
@@ -57,6 +101,48 @@ class QuestionParser:
             Chosen\s*Option
             |
             Status
+            |
+            \Z
+        )
+        """,
+        re.DOTALL | re.VERBOSE,
+    )
+
+    # Pattern for lettered options: "(a)", "(b)", "(c)", "(d)",
+    # "(A)", "(B)", "(C)", "(D)", "A)", "B)", "C)", "D)".
+    # Matches both newline-separated and inline formats.
+    LETTER_OPTION_PATTERN = re.compile(
+        r"""
+        \s*
+        \(?
+        ([a-dA-D])
+        \)
+        \s*
+        (.*?)
+        (?=
+            \s*\(?[a-dA-D]\)
+            |
+            \n\s*\d+\.
+            |
+            Correct\s*Option
+            |
+            \Z
+        )
+        """,
+        re.DOTALL | re.VERBOSE,
+    )
+
+    # Pattern for "1.)", "2.)", "3.)" style options (with close paren after digit)
+    PAREN_DIGIT_OPTION_PATTERN = re.compile(
+        r"""
+        (\d+)
+        \.\)
+        \s*
+        (.*?)
+        (?=
+            \d+\.\)
+            |
+            Correct\s*Option
             |
             \Z
         )
@@ -91,11 +177,29 @@ class QuestionParser:
                 for block in blocks
             )
 
+            # Try Q-prefixed pattern first
             matches = list(
                 self.QUESTION_PATTERN.finditer(
                     page_text
                 )
             )
+
+            # Fall back to plain-numbered pattern if Q-prefixed
+            # found nothing
+            if not matches:
+                matches = list(
+                    self.QUESTION_PATTERN_PLAIN.finditer(
+                        page_text
+                    )
+                )
+
+            # Fall back to Que. pattern
+            if not matches:
+                matches = list(
+                    self.QUESTION_PATTERN_QUE.finditer(
+                        page_text
+                    )
+                )
 
             for match in matches:
 
@@ -106,11 +210,26 @@ class QuestionParser:
                         .strip()
                     )
 
+                    # Determine which number pattern to use
                     qno_match = (
                         self.QUESTION_NUMBER_PATTERN.search(
                             chunk
                         )
                     )
+
+                    if not qno_match:
+                        qno_match = (
+                            self.QUESTION_NUMBER_PATTERN_PLAIN.search(
+                                chunk
+                            )
+                        )
+
+                    if not qno_match:
+                        qno_match = (
+                            self.QUESTION_NUMBER_PATTERN_QUE.search(
+                                chunk
+                            )
+                        )
 
                     if not qno_match:
                         continue
@@ -163,40 +282,114 @@ class QuestionParser:
                 qid_match.group(1)
             )
 
+        # Try numbered options first: "1.", "2.", etc.
         option_matches = (
             self.OPTION_PATTERN.findall(
                 chunk
             )
         )
 
+        use_lettered = False
         options = []
 
-        for _, option_text in option_matches:
+        if option_matches:
 
-            option_text = (
-                self._clean_text(
-                    option_text
+            for _, option_text in option_matches:
+
+                option_text = (
+                    self._clean_text(
+                        option_text
+                    )
+                )
+
+                if option_text:
+
+                    options.append(
+                        option_text
+                    )
+
+        # Fall back to lettered options if not enough numbered options
+        if len(options) < 2:
+
+            options = []
+            use_lettered = True
+
+            letter_matches = (
+                self.LETTER_OPTION_PATTERN.findall(
+                    chunk
                 )
             )
 
-            if option_text:
+            for _, option_text in letter_matches:
 
-                options.append(
-                    option_text
+                option_text = (
+                    self._clean_text(
+                        option_text
+                    )
                 )
+
+                if option_text:
+
+                    options.append(
+                        option_text
+                    )
+
+        # Fall back to "1.)", "2.)" style options
+        if len(options) < 2:
+
+            options = []
+            use_lettered = True
+
+            paren_matches = (
+                self.PAREN_DIGIT_OPTION_PATTERN.findall(
+                    chunk
+                )
+            )
+
+            for _, option_text in paren_matches:
+
+                option_text = (
+                    self._clean_text(
+                        option_text
+                    )
+                )
+
+                if option_text:
+
+                    options.append(
+                        option_text
+                    )
 
         if len(options) < 2:
 
             return None
 
-        # REMOVE OPTIONS
+        # REMOVE OPTIONS FROM QUESTION TEXT
+        if use_lettered:
 
-        question_text = (
-            self.OPTION_PATTERN.sub(
-                "",
-                chunk,
+            question_text = (
+                self.LETTER_OPTION_PATTERN.sub(
+                    "",
+                    chunk,
+                )
             )
-        )
+
+            # Also try removing paren-digit options
+            question_text = (
+                self.PAREN_DIGIT_OPTION_PATTERN.sub(
+                    "",
+                    question_text,
+                )
+            )
+
+        else:
+
+            question_text = (
+                self.OPTION_PATTERN.sub(
+                    "",
+                    chunk,
+                )
+            )
 
         # REMOVE METADATA
 
@@ -220,6 +413,12 @@ class QuestionParser:
 
         question_text = re.sub(
             r"Q\.\d+",
+            "",
+            question_text,
+        )
+
+        question_text = re.sub(
+            r"^\s*\d+\.",
             "",
             question_text,
         )

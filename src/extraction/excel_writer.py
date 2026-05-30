@@ -22,7 +22,6 @@ class ExcelWriter:
         "Verification Status",
         "Reasoning Type",
         "Regex Topic",
-        "LLM Topic",
         "Solution",
     ]
 
@@ -100,7 +99,6 @@ class ExcelWriter:
                 question.verification_status,
                 question.reasoning_type,
                 question.regex_topic,
-                question.llm_topic,
                 question.solution,
             ]
 
